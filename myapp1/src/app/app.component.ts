@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { BtnComponent } from './btn/btn.component';
+import { LinkComponent } from './link/link.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent,AvatarComponent, BtnComponent, LinkComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -18,5 +21,14 @@ export class AppComponent {
 
   clickBoton() {
     this.i = this.i + 1;
+  }
+
+  //Style volverla variable
+  styles={
+    display: 'flex',
+    'flex-direction': 'column',
+    'align-items': 'center',
+    padding: '20px',
+    width: '200px',
   }
 }
