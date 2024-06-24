@@ -1,1 +1,15 @@
-<p>usercard works!</p>
+<div>
+    <h1>Name: {{name}}</h1>
+    <h2>Apellido: {{surname}}</h2>
+    <p>Age: {{age}}</p>
+    <p>Nationality: {{nationality}}</p>
+    <p>Civil State: {{married}}</p>
+    <!--Pipes(Todos los datos)-->
+    <p>Address: {{address | json}}</p>
+    <!--Pipes (Dato por dato)-->
+    <p>Address: {{address.country}}</p>
+    <!--Pipes (dos datos)-->
+    <p>Address: {{address.country}} {{address.city}}</p>
+    <!--Fecha-->
+    <p>{{getDate()}}</p>
+</div>

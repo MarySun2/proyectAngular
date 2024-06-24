@@ -5,13 +5,13 @@ import { FooterComponent } from './footer/footer.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { BtnComponent } from './btn/btn.component';
 import { LinkComponent } from './link/link.component';
-
+import { UsercardComponent } from './usercard/usercard.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent,AvatarComponent, BtnComponent, LinkComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent,AvatarComponent, BtnComponent, LinkComponent,UsercardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
