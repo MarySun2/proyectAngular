@@ -56,3 +56,23 @@
          class="product--actions__btn add">CART</button>
     </div>
 </div>
+
+<form
+[style.display]=" !formState ? 'none': 'flex'" 
+class="form">
+    <h2>Datos de Compra</h2>
+    <label for="address">Direccion</label>
+    <input
+    [(ngModel)] ="address"
+     type="text" 
+     name="address" 
+     id="address"
+     />
+    <label for="postalCode">Codigo Postal</label>
+    <input
+    [(ngModel)] ="postalCode"
+     type="number" name="postalCode" id="postalCode"/>
+    <div class="actions">
+       <button (click)="orderProduct()">ORDER</button>
+    </div>
+</form>

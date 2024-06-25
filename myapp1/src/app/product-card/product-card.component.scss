@@ -69,3 +69,33 @@
 .border-btn {
     border: 1px solid black;
 }
+
+.form {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+
+    label {
+        margin-top: 12px;
+    }
+
+    input {
+        margin-top: 5px;
+    }
+
+    .actions {
+        margin-top: 18px;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            margin-left: 10px;
+            border: none;
+            height: 50px;
+            width: 100px;
+            cursor: pointer;
+            transition: ease-in-out 0.3s;
+        }
+    }
+}

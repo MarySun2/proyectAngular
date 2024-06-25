@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { filter } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
@@ -25,11 +26,25 @@ export class ProductCardComponent {
   //   filter: 'sepia(0.3)',
   // }
 
+  
+  //Two-Way Data Binding
+  formState = false
+
+  address = ''
+  postalCode = 0
+  //////////////////////////////////////////////////////////////////
   //Event Binding entre la logica y el template por medio de metodos
    buyProduct() {
     alert('Compraremos un Producto!!!')
     console.log('Compraremos un Producto!!!');
+    this.formState = true
    }
+
+   orderProduct() {
+    console.log(`Direccion de Usuario: ${this.address}`);
+    console.log(`Direccion de Usuario: ${this.postalCode}`);
+   }
+
    addToCart() {
     alert('Agregaremos un Producto al Carro de Compras!!!!!');
     console.log('Agregaremos un Producto al Carro de Compras!!!!!');

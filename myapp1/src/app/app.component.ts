@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AvatarComponent } from './avatar/avatar.component';
@@ -9,11 +10,14 @@ import { UsercardComponent } from './usercard/usercard.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
+
   imports: [
-    RouterOutlet, 
+    RouterOutlet,
+    FormsModule, 
     HeaderComponent, 
     FooterComponent,
     AvatarComponent, 
