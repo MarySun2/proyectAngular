@@ -1,13 +1,58 @@
-<div class="product">
+<div class="product" [attr.units-avalilable]="product.unitAvailable">
     <div class="product--image">
-        <img class="reloj" src="../../assets/imagen/reloj.png" alt="">
+        <!--Una Forma de hacerlo Property Binding-->
+        <!-- <img 
+        [src]="product.image"
+        [alt]="product.name"
+        > -->
+        <!--otra Forma de hacerlo con Attribute Binding-->
+        <!-- <img 
+        [attr.src]="product.image"
+        [alt]="product.name"
+        [style.border]="'1px solid black'" 
+        > -->
+        <!--otra Forma de hacerlo con Attribute Binding ejemplo 1 en el componente-->
+        <!-- <img 
+        [attr.src]="product.image"
+        [alt]="product.name"
+        [style.border]="imgBorderStyle" 
+        > -->
+        <!--otra Forma de hacerlo con Attribute Binding ejemplo 2 scss-->
+        <!-- <img 
+        [attr.src]="product.image"
+        [alt]="product.name"
+        [class]="'border-btn'" 
+        > -->
+
+        <!--otra Forma de hacerlo con Attribute Binding ejemplo 3 componente-->
+        <!-- <img
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()" 
+        [attr.src]="product.image"
+        [alt]="product.name"
+        [style]="product.unitAvailable < 1 ?productImageStyle :''" 
+        /> -->
+        
+        <!--otra Forma de hacerlo con Event Binding ejemplo 1 -->
+        <img
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()" 
+        [attr.src]="product.image"
+        [alt]="product.name"
+        [style]="productImageStyle" 
+        />
+
     </div>
     <div class="product--info">
-        <h1 class="product--info__title">{{product.name}}</h1>
+        <h1 class="product--info__title">{{product.name}}</h1><!--Property Binding-->
         <p class="product--info__description">{{product.description}}</p>
     </div>
     <div class="product--actions">
-        <button [disabled]="!(product.uniAvailable > 1)" class="product--actions__btn buy">BUY</button>
-        <button class="product--actions__btn add">CART</button>
+        <button
+        (click)="buyProduct()"
+        [disabled]="!(product.unitAvailable > 1)" class="product--actions__btn buy">BUY</button>
+        <button
+        (click)="addToCart()"
+         class="product--actions__btn add">CART</button>
     </div>
 </div>

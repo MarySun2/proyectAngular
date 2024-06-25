@@ -2,6 +2,7 @@
     width: 300px;
     height: 300px;
 }
+
 .product {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 12px;
@@ -62,4 +63,9 @@
     transition: ease-in-out 0.3s;
     }
   }
+}
+
+// otra Forma de hacerlo con Attribute Binding ejemplo 2
+.border-btn {
+    border: 1px solid black;
 }
