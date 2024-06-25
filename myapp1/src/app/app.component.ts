@@ -6,12 +6,22 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { BtnComponent } from './btn/btn.component';
 import { LinkComponent } from './link/link.component';
 import { UsercardComponent } from './usercard/usercard.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent,AvatarComponent, BtnComponent, LinkComponent,UsercardComponent],
+  imports: [
+    RouterOutlet, 
+    HeaderComponent, 
+    FooterComponent,
+    AvatarComponent, 
+    BtnComponent, 
+    LinkComponent,
+    UsercardComponent, 
+    ProductCardComponent],
+    
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
