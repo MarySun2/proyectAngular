@@ -1,0 +1,46 @@
+.title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: flex-end;
+    h1 {
+      margin: 15px;
+    }
+  }
+  .products {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    @media screen and (max-width: 600px) {
+      .product {
+        width: 100%;
+        .container {
+          padding: 15px;
+        }
+      }
+    }
+    @media screen and (min-width: 600px) and (max-width: 992px) {
+      .product {
+        width: 50%;
+        .container {
+          padding: 15px;
+        }
+      }
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      .product {
+        width: 33.33%;
+        .container {
+          padding: 15px;
+        }
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .product {
+        width: 25%;
+        .container {
+          padding: 15px;
+        }
+      }
+    }
+  
+  }

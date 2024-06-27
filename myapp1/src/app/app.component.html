@@ -25,3 +25,28 @@
 <h1>Product-Card</h1>
 <app-product-card></app-product-card>
 <app-footer></app-footer>
+
+
+<h1>Structural Directive</h1>
+<ng-container *ngIf="products.length > 0; else noProducts">
+<div class="title">
+    <h1>Ultimos Productos</h1>
+</div>
+<div class="products">
+    <ng-container *ngFor="let product of products">
+    <ng-container *ngIf="product.unitAvailable > 0">
+        <div class="product">
+            <div class="container">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+        </div>
+    </ng-container>
+    </ng-container>
+</div>
+</ng-container>
+
+<ng-template #noProducts>
+    <div class="title">
+        <h1>No hay productos disponibles</h1>
+    </div>
+</ng-template>

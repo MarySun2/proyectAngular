@@ -13,6 +13,11 @@
     align-items: center;
 
 &--image {
+    padding: 18px 0px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
     img {
         width: 100%;
         border-radius: 12px;
@@ -21,6 +26,8 @@
 }
 
 &--info {
+    padding: 0 18px;
+
     &__title {
         color: darkblue;
     }

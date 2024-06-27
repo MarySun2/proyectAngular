@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -11,14 +11,20 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  product = {
-    image: '../../assets/imagen/reloj.png',
-    name: 'Tasty Granite Salad',
-    description: 'The Beautiful range Apple Naturale That has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
-    unitAvailable: 20,
-    date: 'Wed Jun 26 2024 14:02:42 GMT+0200 (hora de verano de Europa central)',
-    price: 34.5645645,
-  }
+
+  // lo resivo del componente padre 
+  @Input() product :any
+  
+  //PRODUCTO POR DEFECTO
+  // product = {
+  //   image: '../../assets/imagen/reloj.png',
+  //   name: 'Tasty Granite Salad',
+  //   description: 'The Beautiful range Apple Naturale That has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
+  //   unitAvailable: 20,
+  //   date: 'Wed Jun 26 2024 14:02:42 GMT+0200 (hora de verano de Europa central)',
+  //   price: 34.5645645,
+  // }
+
   //-otra Forma de hacerlo con Attribute Binding Ejemplo 1
   imgBorderStyle = '1px solid black'
 
