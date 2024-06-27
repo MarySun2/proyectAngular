@@ -1,23 +1,30 @@
 
 
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../title/title.component';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TitleComponent],
+  imports: [CommonModule, TitleComponent, AvatarComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']  // Corregido a styleUrls
+  styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent  
-{
-  pageTitle ='MY APP';
+export class HeaderComponent {
+  pageTitle = 'MY APP';
+
+  userInfo = {
+    image: '../../assets/imagen/YO.png',
+    role: 'USER'
+  };
+
   constructor() {}
 
-  // Resivir el parametro
-    OnDataCheck(e: any) {
-      console.log(e);
-    }
+  OnDataCheck(e: any) {
+    console.log(e);
+  }
 }
+
 

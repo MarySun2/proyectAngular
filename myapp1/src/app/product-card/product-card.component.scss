@@ -22,11 +22,19 @@
 
 &--info {
     &__title {
-        background: black;
+        color: darkblue;
     }
 
     &__description {
         text-align: justify;
+    }
+    &__price {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        h1 {
+            margin: 0 0 20px 0;
+        }
     }
 }
 

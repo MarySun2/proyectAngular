@@ -44,8 +44,12 @@
 
     </div>
     <div class="product--info">
-        <h1 class="product--info__title">{{product.name}}</h1><!--Property Binding-->
+        <h1 class="product--info__title">{{product.name | uppercase }}</h1><!--Property Binding-->
+        <h3>{{product.date | date:'longDate' }}</h3>
         <p class="product--info__description">{{product.description}}</p>
+        <div class="product--info__price">
+            <h1>{{product.price | number |currency}}</h1>
+        </div>
     </div>
     <div class="product--actions">
         <button
