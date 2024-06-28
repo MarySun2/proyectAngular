@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 30px;
+	border-bottom: 1px solid black;
+}
+
+.active {
+  background: cyan;
+  color: white;
+}

@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1399&q=80",
+      "name": "Licensed Cotton Shoes",
+      "description": "Bostons most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "unitAvailable": "34",
+      "date": "Sat Feb 04 2023 00:05:57 GMT-0400 (Bolivia Time)",
+      "price": "936.00",
+      "category": "home"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Tasty Wooden Soap",
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "unitAvailable": "47",
+      "date": "Sun Nov 06 2022 20:46:38 GMT-0400 (Bolivia Time)",
+      "price": "923.00"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Tasty Soft Salad",
+      "description": "Bostons most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "unitAvailable": "100",
+      "date": "Sat Sep 17 2022 15:11:19 GMT-0400 (Bolivia Time)",
+      "price": "831.00"
+    },
+    {
+      "image": "https://plus.unsplash.com/premium_photo-1675896041816-4154315d12e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=935&q=80",
+      "name": "Fantastic Frozen Bacon",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "unitAvailable": "56",
+      "date": "Tue Aug 30 2022 04:02:20 GMT-0400 (Bolivia Time)",
+      "price": "92.00",
+      "category": "technology"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+      "name": "Intelligent Steel Salad",
+      "description": "The Football Is Good For Training And Recreational Purposes",
+      "unitAvailable": "90",
+      "date": "Mon Oct 24 2022 10:41:08 GMT-0400 (Bolivia Time)",
+      "price": "687.00",
+      "category": "phone"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+      "name": "Intelligent Soft Bike",
+      "description": "Bostons most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "unitAvailable": "90",
+      "date": "Sun Dec 18 2022 12:03:49 GMT-0400 (Bolivia Time)",
+      "price": "783.00",
+      "category": "cosmetics"
+    }
+  ],
+  "status": 200
+}

@@ -1,0 +1,108 @@
+.product {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--image {
+    padding: 18px 0px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    img {
+      width: calc(100% - 32px);
+      border-radius: 12px;
+      object-fit: cover;
+      height: 300px;
+    }
+  }
+
+  &--info {
+    padding: 0 18px;
+
+    &__description {
+      text-align: justify;
+    }
+
+    &__price {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      h1 {
+        margin: 0 0 20px 0;
+      }
+    }
+  }
+
+  &--actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    .buy {
+      background: yellow;
+
+      &:hover {
+        background: orange;
+        color: white;
+      }
+    }
+
+    .add {
+      background: greenyellow;
+
+      &:hover {
+        background: green;
+        color: white;
+      }
+    }
+
+    &__btn {
+      margin: 18px 18px 18px 0px;
+      border: none;
+      height: 50px;
+      width: 100px;
+      cursor: pointer;
+      transition: ease-in-out 0.3s;
+    }
+  }
+}
+
+.border-btn {
+  border: 1px solid black;
+}
+
+.form {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+
+  label {
+    margin-top: 12px;
+  }
+
+  input {
+    margin-top: 5px;
+  }
+
+  .actions {
+    margin-top: 18PX;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 10px;
+      border: none;
+      height: 50px;
+      width: 100px;
+      cursor: pointer;
+      transition: ease-in-out 0.3s;
+    }
+  }
+}
