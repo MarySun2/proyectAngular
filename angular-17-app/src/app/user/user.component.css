@@ -14,3 +14,13 @@ img {
 img:hover {
     cursor: pointer;
 }
+
+button {
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: lightsteelblue;
+}
