@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-games',
@@ -9,7 +9,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './games.component.css'
 })
 export class GamesComponent {
-  @Input() username = ''; // Aqui se hace la comunicacion de padre al hijo 
+  @Input() username = ''; // Aqui se hace la comunicacion de padre al hijo
+  @Output() addFavoriteEvent = new EventEmitter<string>(); // Aqui se hace la comunicacion del hijo al padre
+  
+  //Metodo
+  fav(gameName: string) {
+    // alert(`A ${this.username} le gusta jugar a ${gameName}`);
+    this.addFavoriteEvent.emit(gameName);
+  }
 
   games = [
     {

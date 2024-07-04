@@ -14,6 +14,11 @@ import { GamesComponent } from '../games/games.component';
 export class UserComponent {
 username = 'Mary';
 isLoggedIn = false; // <---- Esta funcionando como un state(estado)
+favGame = '';
+
+getFavorite(gameName: string) {
+  this.favGame = gameName;
+}
 
 //Metodo
 greet() {
