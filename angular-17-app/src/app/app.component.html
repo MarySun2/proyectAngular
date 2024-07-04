@@ -29,6 +29,18 @@
             es valorado por su extensibilidad, rendimiento y la sólida comunidad que lo respalda.
         </p>
     </article>
+    <!--Directiva para cuando no tiene trabajo el cpu un tipo de prioridad de forma diferida-->
+    @defer (on viewport) {
+        <app-comments></app-comments>
+    }
+    <!--huecos de comentarios-->
+    @placeholder {
+        <p>Futuros Comentarios</p>
+    }
+    @loading {
+        <p>Cargando Comentarios</p>
+    }
+    
 </div>
 
 <!-- <router-outlet /> -->
