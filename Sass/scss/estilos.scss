@@ -1,94 +1,15 @@
-// h1 {
-//     color: white;
-//     font-size: 120px;
-//     background: black;
-//     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-//     text-align: center;
-// }
+//importar estilos scss de _component
+// @import "config/componentes";
+// @import "config/mixins";
+// @import "config/estilos";
 
-//Variable
-$text-color: #2b2b2b;
- 
-//mixin
-// @mixin formato-texto {
-//     color: $text-color;
-//     text-transform:uppercase;
-//     width: 50rem;
-//     background-color:#f1f1f1;
-// }
+@use "config/componentes" as comp; // un alias as
+@use "config/mixins"; 
+@use "config/estilos";
 
-//mixin segunda forma puede resibir parametros
-@mixin formato-texto($bg-color) {
-    color: $text-color;
-    text-transform:uppercase;
-    width: 50rem;
-    background-color: $bg-color;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-}
-
-.container {
-    width: 100%;
-    background-color: azure;
-    min-height: 100vh;
-    padding: 0.5rem;
-}
-
-h1 {
-    margin: 0;
-    @include formato-texto(#f1f1f1); // es similar a una funcion
-}
-
-p {
-    // @include formato-texto;
-    @include formato-texto(#666666);
-}
-
-//Formas de hacer la anidacion
-// div.listado ul li {
-//     list-style: none;
-//     font-size: 20px;
-// }
-
-//Otra forma de verlo 
-// .listado {
-//     width: 15rem;
-//     background-color: aquamarine;
-//     padding: 0.5rem;
-// }
-
-// .listado ul {
-//         margin: 0 0.5rem;
-//         font-size: 30px;
-// }
-
-// .listado ul li {
-//         list-style: none;
-// }
-
-// .listado ul li:hover {
-//     color: white;
-// }
-
-// de forma anidada
-.listado {
-    width: 15rem;
-    background-color: aquamarine;
-    padding: 0.5rem;
-
-    ul {
-        margin: 0 0.5rem;
-        font-size: 30px;
-
-        li {
-            list-style: none;
-
-            &:hover {
-                color: white;
-            }
-        }
-    }
-}
+//Paginas
+//Pagina Principal
+//Pagina de Contacto
+//Pagina de aviso Legal
+//Otros
+@use "config/builtin"

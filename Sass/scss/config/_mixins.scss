@@ -1,0 +1,10 @@
+//Variable
+$text-color: #2b2b2b;
+
+//mixin segunda forma puede resibir parametros
+@mixin formato-texto($bg-color) {
+    color: $text-color;
+    text-transform:uppercase;
+    width: 50rem;
+    background-color: $bg-color;
+}
