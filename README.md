@@ -1,4 +1,4 @@
-# Aprendizaje de Angular Version 17 Cli
+# Aprendizaje de Sass 
 <picture>
-  <img alt="Imagen" src="https://res.infoq.com/news/2024/01/angular-17-new-branding/en/headerimage/header-1704652449727.jpg">
+  <img alt="Imagen" src="https://w7.pngwing.com/pngs/780/540/png-transparent-web-development-sass-cascading-style-sheets-less-preprocessor-psd-purple-web-design-violet-thumbnail.png">
 </picture>
