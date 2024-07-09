@@ -2,6 +2,7 @@
 @use "mixins";
 
 $color-main:#0075FF;
+$color-footer:#f4f8fe;
 
 .btn-main {
     @include mixins.btn-base();
@@ -100,13 +101,13 @@ $color-main:#0075FF;
     align-items: center;
     justify-content:center;
     
-    .icon {
+    i {
         color: $color-main;
         font-size: 10rem;
         padding: 0;
     }
     .title {
-        margin-top: -2rem;
+        margin-top: -1rem;
         font-size: 1.5rem;
         font-weight: 600;
     }

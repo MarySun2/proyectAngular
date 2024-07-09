@@ -2,6 +2,10 @@
 //mixin
 @use "mixins";
 
+html {
+    min-width: 100vw;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -36,6 +40,14 @@ body {
         .home-title {
             width: 20rem;
             font-size: 3rem;
+        }
+        .home-description {
+            width: 300px;
+        }
+        .lead-magnet {
+            .input-col {
+                max-width: 200px;
+            }
         }
     }
 }
@@ -128,6 +140,101 @@ body {
         .desc {
             font-size: 0.9rem;
             color: #ffffffaa;
+        }
+    }
+}
+
+.sec-onboarding {
+    .intro {
+        @extend .sec-features, .intro;
+    }
+    .steps {
+        padding: 0 7rem 5rem 7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .step-separator {
+            flex: 1;
+            border-top: 2px solid #ddd;
+            margin: 0.1rem;
+        }
+    }
+}
+
+.sec-footer-cta {
+    background-color: components.$color-footer;
+    color: white;
+    padding: 5rem;
+    background-image: url("../assets/img/fondo.jpeg");
+    background-repeat: no-repeat;
+    background-position: center; /* Cambié a 'center' para centrar la imagen */
+    background-size: cover; /* Añadido para adaptar la imagen al contenedor */
+    background-attachment: fixed; /* Opcional: Para que la imagen se mantenga fija al hacer scroll */
+    
+    .footer-cta {
+        width: 50%;
+        
+        .cta-title {
+            font-size: 2rem;
+        }
+        
+        .cta-description {
+            font-size: 1.1rem;
+        }
+    } 
+}
+footer {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    h6 {
+        margin-left: 60rem;
+    }
+    
+}
+
+@media (max-width:768px) {
+    .sec-onboarding {
+        .steps {
+            flex-direction: column;
+            .icon-desc {
+                .title {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    
+    .sec-features {
+        .intro {
+            text-align: center;
+            h3 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            } 
+        }
+    }
+
+    .sec-benefits {
+        .intro {
+            text-align: center;
+            h3 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            } 
+        }
+    }
+
+    .sec-footer-cta {
+        background-image: none;
+        .footer-cta {
+            width: 100%;
+            text-align: center;
+            color: black;
         }
     }
 }
