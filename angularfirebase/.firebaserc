@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "fir-angular-600d6",
+    "production": "fir-angularprod-1ae3f"
+  }
+}
