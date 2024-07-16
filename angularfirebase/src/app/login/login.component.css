@@ -2,14 +2,13 @@
 
 /* Form Container */
 .form-container {
-    width: 300px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+  width: 300px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
   
   /* Form Inputs */
   input[type="email"],
@@ -35,4 +34,19 @@
   
   button[type="submit"]:hover {
     background-color: #45a049;
+  }
+
+  .message {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: black;
+  }
+  
+  .message.success {
+    background-color: #4caf50; /* Verde para éxito */
+  }
+  
+  .message.error {
+    background-color: #f44336; /* Rojo para error */
   }
