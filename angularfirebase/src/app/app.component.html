@@ -10,7 +10,27 @@
 <!-- Mostrar el botón de login si no hay un usuario autenticado -->
 <ng-template #login>
   <div class="loginDiv">
-    <button (click)="auth.glogin()">Login with Google</button>
+
+    <form class="form">
+    <input type="text" name="email"
+    placeholder="Escribe tu Email...."
+    [(ngModel)]="auth.email"
+    />
+
+    <br>
+    <br>
+
+    <input type="password" name="pass"
+    placeholder="Escribe tu Contraseña...."
+    [(ngModel)]="auth.pass"
+    />
+
+    <br><br>
+    <button (click)="auth.login()">Email Login</button>
+    <br><br>
+
+    <button (click)="auth.glogin()">Google Login</button>
+  </form>
   </div>
 </ng-template>
 

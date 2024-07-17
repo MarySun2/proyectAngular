@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  email = '';
+  pass = '';
+  
+
   constructor(public auth: AngularFireAuth, private router: Router) {}
 
   user = this.auth.authState.pipe(
@@ -22,10 +26,16 @@ export class AuthService {
     }))
   
 
-  login() {
-    console.log('login!');
-    // Implementar lógica de inicio de sesión aquí si es necesario
-  }
+    login(){
+      console.log('login!');
+      this.auth.signInWithEmailAndPassword(this.email, this.pass)
+      .then( user => {
+        console.log('user logado con email: ', user);
+      })
+      .catch( error => {
+        console.log('error en email login: ', error);
+      });
+    }
 
   glogin() {
     console.log('google login!');
