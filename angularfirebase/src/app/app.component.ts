@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environments'; // crear una ruta
+import { environment } from '../environments/environments';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = environment.title;
+
+  constructor(public auth: AuthService) {}
+
+  login() {
+    this.auth.login();
+  }
+
+  glogin() {
+    this.auth.glogin();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
 }

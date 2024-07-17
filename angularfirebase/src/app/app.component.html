@@ -1,4 +1,16 @@
-
 <h1>Hello, {{ title }}</h1>
 
-<router-outlet></router-outlet>
+<!-- Mostrar información del usuario si está autenticado -->
+<div *ngIf="auth.user | async as user; else login" class="loginDiv">
+  {{ user.uid }} - {{ user.email }}
+  <br>
+  <button (click)="auth.logout()">Logout</button>
+</div>
+
+<!-- Mostrar el botón de login si no hay un usuario autenticado -->
+<ng-template #login>
+  <div class="loginDiv">
+    <button (click)="auth.glogin()">Login with Google</button>
+  </div>
+</ng-template>
+
