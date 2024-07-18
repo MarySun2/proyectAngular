@@ -5,6 +5,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Importa An
 import { environment } from '../environments/environments'; // Configuración de Firebase
 import { AppComponent } from './app.component'; // Importa tu componente principal
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,10 @@ import { NgModule } from '@angular/core';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Inicializa Firebase con tu configuración
     AngularFireAuthModule,
-    FormsModule 
+    FormsModule ,
+    RouterModule.forRoot(routes),
+    HomeComponent,
+    SettingsComponent
     // Otros módulos necesarios como FormsModule, HttpClientModule, etc.
   ],
   providers: [],

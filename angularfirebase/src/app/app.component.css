@@ -2,3 +2,16 @@ h1 {
     text-align: center;
     color:darkcyan;
 }
+
+/*Efecto del nav*/
+.navbar-nav .nav-item .nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #ffffff; /* Cambia el color de texto */
+    background-color: #007bff; /* Cambia el color de fondo */
+    border-radius: 5px; /* Agrega un borde redondeado opcional */
+    cursor: pointer;
+  }
+  
