@@ -34,7 +34,7 @@
   <div class="loginDiv">
 
     <form class="form">
-    <input type="text" name="email"
+    <input class="form-control" type="text" name="email"
     placeholder="Escribe tu Email...."
     [(ngModel)]="auth.email"
     />
@@ -42,16 +42,19 @@
     <br>
     <br>
 
-    <input type="password" name="pass"
+    <input class="form-control" type="password" name="pass"
     placeholder="Escribe tu Contraseña...."
     [(ngModel)]="auth.pass"
     />
 
     <br><br>
-    <button (click)="auth.login()">Email Login</button>
+    <button class="btn btn-primary" (click)="auth.login()">Email Login</button>
     <br><br>
 
-    <button (click)="auth.glogin()">Google Login</button>
+    <button class="btn btn-danger" (click)="auth.glogin()">
+      <i class="fa-brands fa-google"></i>
+      Google Login
+    </button>
   </form>
   </div>
 </ng-template>

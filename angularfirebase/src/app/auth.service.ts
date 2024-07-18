@@ -31,6 +31,8 @@ export class AuthService {
       this.auth.signInWithEmailAndPassword(this.email, this.pass)
       .then( user => {
         console.log('user logado con email: ', user);
+        this.email = '';
+        this.pass = '';
       })
       .catch( error => {
         console.log('error en email login: ', error);
@@ -42,6 +44,8 @@ export class AuthService {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()) 
       .then(userCredential => {
         console.log('User logueado: ', userCredential);
+        this.email = '';
+        this.pass = '';
         // Lógica adicional después del inicio de sesión
       })
       .catch(error => {
@@ -52,6 +56,9 @@ export class AuthService {
   logout() {
     console.log('logout!');
     this.auth.signOut();
+    this.email = '';
+    this.pass = '';
+    this.router.navigate(['/']);
   }
 }
 
