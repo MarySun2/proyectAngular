@@ -28,23 +28,12 @@ export class AuthService {
 
     login(){
       console.log('login!');
-      this.auth.signInWithEmailAndPassword(this.email, this.pass)
+      return this.auth.signInWithEmailAndPassword(this.email, this.pass)
       .then( user => {
         console.log('user logado con email: ', user);
         this.email = '';
         this.pass = '';
       })
-      .catch( error => {
-        //console.log('error en email login: ', error);
-        console.log('Error Code:', error.code);
-        if (error.code === 'auth/wrong-password') {
-          alert('Contraseña no válida');
-        } else if (error.code === 'auth/invalid-email') {
-          alert('Formato de email no válido');
-        } else {
-          alert('Error en el inicio de sesión con Google');
-        }
-      });
     }
 
   glogin() {

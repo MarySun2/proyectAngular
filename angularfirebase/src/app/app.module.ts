@@ -10,6 +10,11 @@ import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 
+//Mensajes dee error con toast
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +27,13 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule ,
     RouterModule.forRoot(routes),
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 2000,      // en segundos
+      positionClass: 'Toast-top-center',
+    }) // ToastrModule added
     // Otros módulos necesarios como FormsModule, HttpClientModule, etc.
   ],
   providers: [],
