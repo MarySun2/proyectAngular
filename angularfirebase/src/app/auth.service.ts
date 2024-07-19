@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { map } from 'rxjs/operators';
-import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
+import firebase from 'firebase/compat/app';
+import { map } from 'rxjs/operators';
+import { FireDbService } from './fire-db.service'; // Asegúrate de importar FireDbService
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,12 @@ export class AuthService {
 
   email = '';
   pass = '';
-  
 
-  constructor(public auth: AngularFireAuth, 
-              private router: Router,
-              private db: AngularFireDatabase) {}
+  constructor(
+    public auth: AngularFireAuth, 
+    private router: Router,
+    private fireDbService: FireDbService // Inyecta FireDbService
+  ) {}
 
   user = this.auth.authState.pipe(
     map(authState => { 
@@ -26,19 +27,21 @@ export class AuthService {
       } else {
         return null;
       }
-    }))
-  
+    })
+  );
 
-    login(){
-      console.log('login!');
-      return this.auth.signInWithEmailAndPassword(this.email, this.pass)
-      .then( userCredential => {
+  login() {
+    console.log('login!');
+    return this.auth.signInWithEmailAndPassword(this.email, this.pass)
+      .then(userCredential => {
         console.log('user logado con email: ', userCredential.user);
         this.email = '';
         this.pass = '';
-        this.updateUserData(userCredential.user);
-      })
-    }
+        if (userCredential.user) {
+          this.fireDbService.updateUserData(userCredential.user); // Usa FireDbService aquí
+        }
+      });
+  }
 
   glogin() {
     console.log('google login!');
@@ -47,7 +50,9 @@ export class AuthService {
         console.log('User logueado: ', userCredential.user);
         this.email = '';
         this.pass = '';
-        this.updateUserData(userCredential.user);
+        if (userCredential.user) {
+          this.fireDbService.updateUserData(userCredential.user); // Usa FireDbService aquí
+        }
         // Lógica adicional después del inicio de sesión
       })
       .catch(error => {
@@ -61,15 +66,6 @@ export class AuthService {
     this.email = '';
     this.pass = '';
     this.router.navigate(['/']);
-  }
-
-  updateUserData(user: any) {
-    console.log('user: ', user);
-    const path = `users/${user.uid}`;
-    const u = {
-      email: user.email
-    }
-    this.db.object(path).update(u).catch(error => console.log(error));
   }
 }
 
