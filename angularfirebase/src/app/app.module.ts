@@ -9,11 +9,14 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 //Mensajes dee error con toast
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Inicializa Firebase con tu configuración
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     FormsModule ,
     RouterModule.forRoot(routes),
     HomeComponent,
