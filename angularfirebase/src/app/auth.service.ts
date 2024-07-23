@@ -12,6 +12,7 @@ export class AuthService {
 
   email = '';
   pass = '';
+  authUser = null;
 
   constructor(
     public auth: AngularFireAuth, 
@@ -23,6 +24,7 @@ export class AuthService {
     map(authState => { 
       console.log('authState: ', authState);
       if (authState) {
+        this.authUser = authState;
         return authState;
       } else {
         return null;
@@ -37,6 +39,7 @@ export class AuthService {
         console.log('user logado con email: ', userCredential.user);
         this.email = '';
         this.pass = '';
+        this.authUser = userCredential.user;
         if (userCredential.user) {
           this.fireDbService.updateUserData(userCredential.user); // Usa FireDbService aquí
         }
@@ -50,6 +53,7 @@ export class AuthService {
         console.log('User logueado: ', userCredential.user);
         this.email = '';
         this.pass = '';
+        this.authUser = userCredential.user;
         if (userCredential.user) {
           this.fireDbService.updateUserData(userCredential.user); // Usa FireDbService aquí
         }

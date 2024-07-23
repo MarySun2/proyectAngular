@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+
+// Dependencias firebase
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 

@@ -3,6 +3,21 @@
 
     <br/><br/>
 
+    <progress max="100" [value]="(firestorage.uploadProgress | async)"></progress>
+
+    <br/><br/>
+    <br/><br/>
+
+    <div class="result" *ngIf="firestorage.downloadURL | async; let url">
+        <img [src]="url" width="200">
+    </div>
+
+    <label for="file">Imagen de Usuario</label>
+    <input type="file"(change)="firestorage.upload($event)"
+    accept =".png, .jpg"/>
+
+    <br><br>
+
     <button (click)="goHome()">
         <i class="bi bi-house-fill"></i>
     </button>
