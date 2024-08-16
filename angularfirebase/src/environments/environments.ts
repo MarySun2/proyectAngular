@@ -14,7 +14,7 @@ export const environment = {
         appId: "1:224374695302:web:83488467bb40870aabb807",
         measurementId: "G-LQLEKY7PSC"
     },
-    title: 'AngularFirebaseProyect!!' // Entorno de Desarrollo
+    title: 'Pagina Entorno Local!!' // Entorno de Desarrollo
   };
   
   /*

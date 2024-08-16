@@ -10,5 +10,5 @@ export const environment = {
         appId: "1:1024121374532:web:3ce996222ac27cd55d7911",
         measurementId: "G-B7ES7D8H5B"
     },
-    title: 'AngularFirebaseProyect!! PROD' // entorno de produccion
+    title: 'Pagina Entorno Produccion' // entorno de produccion
   };
