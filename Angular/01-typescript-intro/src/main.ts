@@ -3,6 +3,11 @@ import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 
+//Hecho por mi 
+//import './topics/01-basic-types.ts'
+//import './topics/02-object-interface.ts'
+import './topics/03-funtions.ts'
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
