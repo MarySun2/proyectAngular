@@ -1,7 +1,13 @@
 // impuesto sobre la renta de los productos
 
 // Interface
-interface Product 
+// interface Product 
+// {
+//     description: string;
+//     price: Price;
+// }
+
+ export interface Product 
 {
     description: string;
     price: Price;
@@ -48,7 +54,7 @@ interface TaxCalculationsOptions
 //funciones
 //function taxCalculation(options: TaxCalculationsOptions): [number, number] {
 //function taxCalculation({tax, products}: TaxCalculationsOptions): [number, number] {
-function taxCalculation(options: TaxCalculationsOptions): [number, number] {
+export function taxCalculation(options: TaxCalculationsOptions): [number, number] {
 
     const {tax, products} = options; // para desestructurar esto
 
@@ -88,4 +94,3 @@ const [total, taxTotal] = taxCalculation({
 console.log('Total ', total);
 console.log('Tax ', taxTotal);
 
-export {}
