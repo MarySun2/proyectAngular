@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'app-heroes-hero',
@@ -25,5 +26,16 @@ export class HeroComponent {
 
   changeAge(): void {
     this.age =25;
+  }
+
+  resetForm(): void {
+    //this.name = 'ironman';
+    this.age =30;
+
+    //Usando el DOM
+    document.querySelector('h1')!.innerHTML = '<h1>Desde Angular</h1>';
+    //document.querySelectorAll('h1')!.forEach(element =>{
+      //element.innerHTML = '<h1>Desde Angular</h1>';
+    //})
   }
 }
