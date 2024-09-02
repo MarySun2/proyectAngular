@@ -11,7 +11,10 @@ import { ListComponent } from './Heroes/list/list.component';
 
 @NgModule({
   declarations: [
-    AppComponent, CounterComponent, HeroComponent, ListComponent
+    AppComponent,
+    CounterComponent,
+    HeroComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
