@@ -19,4 +19,8 @@ export class MainPageComponent {
     power: 7500,
   }];
 
+  onNewCharacter(Character: Character): void {
+    console.error('MainPage');
+    console.warn(Character);
+  }
 }
