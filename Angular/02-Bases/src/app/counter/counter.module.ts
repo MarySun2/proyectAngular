@@ -6,6 +6,8 @@ import { CounterComponent } from "./Components/counter/counter.component";
 
 
 @NgModule({
+  exports:[CounterComponent
+  ],
   declarations: [
    CounterComponent
   ],

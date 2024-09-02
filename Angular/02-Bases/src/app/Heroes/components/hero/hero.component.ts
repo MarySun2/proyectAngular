@@ -29,7 +29,7 @@ export class HeroComponent {
   }
 
   resetForm(): void {
-    //this.name = 'ironman';
+    this.name = 'ironman';
     this.age =30;
 
     //Usando el DOM
