@@ -20,7 +20,12 @@ export class MainPageComponent {
   }];
 
   onNewCharacter(Character: Character): void {
-    console.error('MainPage');
-    console.warn(Character);
+    // console.error('MainPage');
+    // console.warn(Character);
+    this.characters.push(Character);
+  }
+
+  onDeleteCharacter(index: number): void {
+    this.characters.splice(index,1);
   }
 }
