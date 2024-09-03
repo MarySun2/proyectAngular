@@ -22,7 +22,7 @@ export class DbzService {
     power: 7500,
   }];
 
-  onNewCharacter(character: Character): void {
+  addCharacter(character: Character): void {
     // console.error('MainPage');
     // console.warn(Character);
     //this.characters.push(Character);

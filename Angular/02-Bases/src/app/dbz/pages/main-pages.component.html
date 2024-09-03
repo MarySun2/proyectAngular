@@ -5,13 +5,14 @@
 <div class="row">
   <div class="col">
 
-    <app-dbz-list [characterList]="DbzService.characters" (onDelete)="DbzService.deleteCharacterById($event)"></app-dbz-list>
+    <app-dbz-list [characterList]="characters"
+                  (onDelete)="onDeleteCharacter($event)"></app-dbz-list>
 
   </div>
   <!-- Formulario -->
   <div class="col">
 
-    <app-dbz-add-character (onNewCharacter)="DbzService.onNewCharacter($event)"></app-dbz-add-character>
+    <app-dbz-add-character (onNewCharacter)="onNewCharacter($event)"></app-dbz-add-character>
 
 
   </div>
