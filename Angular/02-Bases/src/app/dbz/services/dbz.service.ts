@@ -37,7 +37,7 @@ export class DbzService {
   // }
 
   // Borra con id unico
-  deleteCharacter(id:string) {
+  deleteCharacterById(id:string) {
     this.characters = this.characters.filter (character => character.id !== id);
   }
 
