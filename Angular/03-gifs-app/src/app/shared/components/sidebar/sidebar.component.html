@@ -1,9 +1,13 @@
+<!-- Contenedor principal del sidebar con fondo oscuro y espaciado -->
 <div class="bg-dark" border-right p-3 id="sidebar">
+  <!-- Título de la aplicación -->
   <h3 class="text-light">GifsApp</h3>
+   <!-- Línea horizontal separadora con color blanco -->
   <hr class="text-white">
 
-<!--Listado que esta en gifapp-->
+<!-- Listado de etiquetas de búsqueda de GIFs -->
   <div class="list-group" list-reset>
+     <!-- Itera sobre el arreglo de etiquetas y crea un botón por cada etiqueta -->
     <button
     *ngFor="let tag of tags"
     (click)="searchTag(tag)"
@@ -12,3 +16,8 @@
     </button>
   </div>
 </div>
+
+<!--(*ngFor="let tag of tags") Directiva Angular para iterar sobre 'tags' -->
+<!--((click)="searchTag(tag)")Llama al método 'searchTag' al hacer clic en el botón -->
+<!-- (class="list-group-item list-group-item-action">)Clases para estilo del botón -->
+<!-- ({{tag | titlecase}})Muestra la etiqueta formateada en "Title Case" -->

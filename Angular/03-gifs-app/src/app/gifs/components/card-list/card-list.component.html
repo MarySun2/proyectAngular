@@ -1,13 +1,27 @@
 <div class="row">
-<!--Boton imagenes-->
-<!--Recibe los gifs-->
+ <!--
+    Contenedor con la clase "row" de Bootstrap para estructurar una fila en la cuadrícula.
+    Dentro de esta fila, se generan múltiples tarjetas GIF (gifs-card) para cada elemento en la lista "gifs".
+  -->
 
+  <!--
+    Componente "gifs-card" que itera sobre la lista de GIFs utilizando la directiva "*ngFor".
+    Para cada GIF en la lista "gifs", se crea una tarjeta que recibe el objeto "gif" como propiedad a través del binding "[gif]".
+    Las clases de Bootstrap "col-md-3" y "col-sm-6" definen el ancho de la columna, haciendo que cada tarjeta ocupe 1/4 del ancho en pantallas medianas
+    y 1/2 del ancho en pantallas pequeñas.
+  -->
 
   <gifs-card
   *ngFor="let gif of gifs"
   [gif]="gif"
   class="col-md-3 col-sm-6"
   > </gifs-card>
+
+   <!--
+    Código comentado que representa una alternativa para renderizar los GIFs directamente en lugar de usar un componente "gifs-card".
+    Cada GIF se muestra en una tarjeta Bootstrap (card) con una imagen y un título.
+    La tarjeta incluye una imagen en la parte superior y un cuerpo que muestra el título del GIF.
+  -->
 
   <!-- <div *ngFor="let gif of gifs" class="col-md-3 col-sm-6">
 
@@ -27,6 +41,9 @@
     </div>
   </div> -->
 </div>
+
+<!-- Código comentado que renderizaba una lista no ordenada con algunos elementos de ejemplo.
+     Esto no se utiliza en la vista actual. -->
 
 <!-- <ul>
   <li>Primero</li>

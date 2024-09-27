@@ -1,11 +1,18 @@
 <div class="row p-3">
+  <!-- Contenedor con un padding de 3 unidades. La fila contiene dos columnas. -->
+
   <div class="col-12">
-    <!-- Busquedas -->
+    <!-- Columna que ocupa todo el ancho de la fila. Aquí se renderiza el componente de búsqueda de GIFs. -->
     <gifs-search-box></gifs-search-box>
+    <!-- Componente que representa el cuadro de búsqueda de GIFs. Permite al usuario buscar GIFs por palabra clave. -->
   </div>
+
   <div class="col-12 pt-2">
+    <!-- Columna que también ocupa todo el ancho, pero con un padding-top de 2 unidades para separar visualmente de la columna anterior. -->
+
     <!-- Listado de Gifs -->
-     <!-- Card-list -->
-     <gifs-card-list [gifs]="gifs"></gifs-card-list>
+    <!-- El componente 'gifs-card-list' se encarga de recibir y mostrar la lista de GIFs. -->
+    <gifs-card-list [gifs]="gifs"></gifs-card-list>
+    <!-- 'gifs' es una propiedad que contiene el listado de GIFs a mostrar. Estos son pasados al componente 'gifs-card-list' como entrada. -->
   </div>
 </div>

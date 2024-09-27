@@ -1,9 +1,17 @@
-<h5>Buscar:</h5>
+<h5>Buscar:</h5>            <!-- Título de la sección de búsqueda -->
 <input type="text"
 class="form-control"
 placeholder="Buscar  gifs"
 (keyup.enter)="searchTag()"
 #txtTagInput
 >
-<!--Keyup.enter ->> lo que hace es que solo cuando das enter el captura lo que escribes-->
-<!--otra forma(s"earchTag(txtTagInput.value)")-->
+ <!--(class="form-control") Clase de Bootstrap que estiliza el campo de texto -->
+<!-- (placeholder="Buscar  gifs")Texto que aparece como sugerencia dentro del campo de búsqueda -->
+ <!--((keyup.enter)="searchTag()") Evento que se activa al presionar la tecla 'Enter'. Llama al método 'searchTag()' -->
+<!-- (#txtTagInput)Template reference variable que puede ser utilizada para acceder al valor de la entrada -->
+<!--
+  Comentario:
+  - "keyup.enter" se usa para ejecutar la función 'searchTag()' solo cuando se presiona la tecla Enter.
+  - #txtTagInput es una referencia al input, que podría usarse en combinación con otra forma de capturar el valor, por ejemplo:
+    searchTag(txtTagInput.value) -> Se pasaría directamente el valor del campo de entrada al método 'searchTag'.
+-->

@@ -1,18 +1,48 @@
+<!--
+  Esta es una tarjeta (card) estilizada con Bootstrap, que muestra una imagen GIF y su título.
+  La clase "mb-2" añade un margen inferior, mientras que "bg-dark" cambia el fondo de la tarjeta a oscuro.
+  "text-center" alinea el contenido en el centro y "text-white" asegura que el texto sea blanco.
+-->
 <div class="card mb-2 text-center bg-dark text-center">
+
+  <!--
+    Componente personalizado "shared-lazy-image" que se utiliza para mostrar la imagen de forma diferida (lazy loading).
+    Se le pasan dos propiedades:
+    - [url]: La URL de la imagen GIF obtenida del objeto "gif", en su formato redimensionado.
+    - [alt]: El texto alternativo (alt) que se muestra si no se puede cargar la imagen.
+             Se utiliza el título del GIF, pero si no está disponible, se muestra "No name".
+  -->
   <shared-lazy-image
     [url]="gif.images.downsized_medium.url"
-    [alt]="gif.title || 'No name'"
-    >
+    [alt]="gif.title || 'No name'">
   </shared-lazy-image>
+
+  <!--
+    Esta es una opción alternativa comentada que podría usarse en lugar del componente "shared-lazy-image".
+    En su lugar, usa una etiqueta <img> estándar con las propiedades:
+    - [src]: la URL de la imagen GIF redimensionada.
+    - [alt]: el título del GIF, o "No name" si el título no está disponible.
+    También se le asigna la clase "card-img-top" que ajusta la imagen a la parte superior de la tarjeta.
+  -->
   <!-- <img
-  [src]="gif.images.downsized_medium.url"
-  [alt]="gif.title"
-  class="card-img-top"
+    [src]="gif.images.downsized_medium.url"
+    [alt]="gif.title"
+    class="card-img-top"
   > -->
 
+  <!--
+    Cuerpo de la tarjeta donde se muestra el título del GIF.
+    - "card-body": clase de Bootstrap que estructura el contenido del cuerpo de la tarjeta.
+    - "text-white": asegura que el texto del cuerpo sea de color blanco.
+  -->
   <div class="card-body text-white">
+
+    <!--
+      Texto que muestra el título del GIF. Si no tiene título, muestra "no title".
+    -->
     <p class="card-text">
-      {{gif.title || 'no title'}}
+      {{ gif.title || 'no title' }}
     </p>
+
   </div>
 </div>

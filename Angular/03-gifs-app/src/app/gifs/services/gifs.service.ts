@@ -2,89 +2,109 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 
-//Otra forma de hacerlo
-//const GIPHY_API_KEY = 'beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw';
+// Otra forma de hacerlo (declarar la API Key directamente aquí, pero es menos seguro)
+// const GIPHY_API_KEY = 'beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Esto indica que este servicio estará disponible en toda la aplicación
 })
 export class GifsService {
 
-  public gifList: Gif[]= [];
+  // Lista pública donde se almacenan los GIFs obtenidos de la búsqueda
+  public gifList: Gif[] = [];
 
-  private _tagsHistory:string[] = [];
-  private apiKey:       string ='beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw';
-  private serviceUrl:   string ='https://api.giphy.com/v1/gifs';
+  // Historial privado de los términos de búsqueda
+  private _tagsHistory: string[] = [];
 
+  // Clave API para acceder a Giphy
+  private apiKey: string = 'beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw';
+
+  // URL base del servicio de Giphy
+  private serviceUrl: string = 'https://api.giphy.com/v1/gifs';
+
+  // Constructor donde inyectamos el servicio HttpClient para hacer peticiones HTTP
   constructor(private http: HttpClient) {
-    this.loadLocalStorage();
-    console.log('Gifs Service Ready');
-   }
+    this.loadLocalStorage(); // Carga el historial almacenado localmente
+    console.log('Gifs Service Ready'); // Indica que el servicio está listo
+  }
 
+  // Getter para obtener una copia del historial de búsquedas
   get tagsHistory() {
-    return [...this._tagsHistory];
+    return [...this._tagsHistory]; // Se devuelve una copia para evitar mutar el original
   }
 
-  //Metodo
-
-  private organizeHistory(tag:string) {
+  // Método para organizar el historial de búsqueda
+  private organizeHistory(tag: string) {
+    // Si el tag ya existe en el historial, se elimina
     if (this._tagsHistory.includes(tag)) {
-      this._tagsHistory = this._tagsHistory.filter( (oldTag)=> oldTag !== tag )
+      this._tagsHistory = this._tagsHistory.filter((oldTag) => oldTag !== tag);
     }
-    this._tagsHistory.unshift(tag); // lo punga al inicio
-    this._tagsHistory = this._tagsHistory.splice(0,10) //Que solo haga 10 busquedas
-    this.saveLocalStorage(); // Mantiene la informacion en el local storage
+
+    // Se agrega el nuevo tag al inicio del historial
+    this._tagsHistory.unshift(tag);
+
+    // Limita el historial a los 10 últimos tags
+    this._tagsHistory = this._tagsHistory.splice(0, 10);
+
+    // Guarda el historial actualizado en el LocalStorage
+    this.saveLocalStorage();
   }
 
-  private saveLocalStorage() :void {
+  // Guarda el historial en LocalStorage
+  private saveLocalStorage(): void {
     localStorage.setItem('history', JSON.stringify(this._tagsHistory));
   }
 
-  private loadLocalStorage() :void {
-    if( !localStorage.getItem('history')) return;
+  // Carga el historial desde el LocalStorage
+  private loadLocalStorage(): void {
+    if (!localStorage.getItem('history')) return; // Si no hay historial, no hace nada
 
-    this._tagsHistory = JSON.parse(localStorage.getItem('history')! );
+    // Carga el historial desde LocalStorage
+    this._tagsHistory = JSON.parse(localStorage.getItem('history')!);
 
-    if( this._tagsHistory.length === 0 ) return;
-    this.searchTag(this._tagsHistory[0] );
+    // Si no hay tags en el historial, no busca nada
+    if (this._tagsHistory.length === 0) return;
+
+    // Realiza una búsqueda con el primer tag del historial
+    this.searchTag(this._tagsHistory[0]);
   }
 
-  searchTag(tag:string) : void {
-    if(tag.length ===0) return;
+  // Método para buscar un tag específico
+  searchTag(tag: string): void {
+    if (tag.length === 0) return; // Si el tag está vacío, no hace nada
 
-     // Validación para evitar números
-    //  const regex = /^[a-zA-Z]+$/;
-    //  if (!regex.test(tag)) {
-    //    console.log('No se permiten números en el tag.');
-    //    return; // Sale del método si el tag contiene números
-    //  }
+    // Organiza el historial de búsquedas
+    this.organizeHistory(tag);
 
-  this.organizeHistory(tag);
+    console.log(this._tagsHistory);
 
-  console.log(this._tagsHistory);
+    // Parámetros para la petición HTTP
+    const params = new HttpParams()
+      .set('api_key', this.apiKey) // Clave API para acceder a Giphy
+      .set('limit', 10)            // Límite de resultados
+      .set('q', tag);              // Término de búsqueda
 
-  const params = new HttpParams()
-  .set('api_key', this.apiKey)
-  .set('limit', 10)
-  .set('q', tag)
+    // Petición HTTP para buscar GIFs en Giphy
+    this.http.get<SearchResponse>(`${this.serviceUrl}/search`, { params })
+      .subscribe(resp => {
+        console.log(resp);
 
-  this.http.get<SearchResponse>(`${this.serviceUrl}/search`, {params}) // Se puede reducir
-  .subscribe(resp => {
-    console.log(resp);
+        // Almacena los resultados en gifList
+        this.gifList = resp.data;
+        console.log({ gifs: this.gifList });
+      });
 
-    this.gifList = resp.data;
-    console.log({gifs: this.gifList});
-  });
+    // Métodos alternativos para hacer la misma búsqueda usando fetch:
 
+    // Primera Forma de hacerlo:
+    // fetch('https://api.giphy.com/v1/gifs/search?api_key=beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw&q=valorant&limit=10')
+    // .then(resp => resp.json())
+    // .then(data => console.log(data));
 
-  // Primera Forma de hacerlo:
-  // fetch('https://api.giphy.com/v1/gifs/search?api_key=beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw&q=valorant&limit=10')
-  // .then(resp => resp.json())
-  // .then(data=> console.log(data));
-
-  //Segunda Forma de hacerlo
-  // const resp = await fetch('https://api.giphy.com/v1/gifs/search?api_key=beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw&q=valorant&limit=10')
-  // const data = await resp.json();
-  // console.log(data);
+    // Segunda Forma de hacerlo con async/await:
+    // const resp = await fetch('https://api.giphy.com/v1/gifs/search?api_key=beBWg9oYZvJ5MiZFRROV7RASF3Jg49kw&q=valorant&limit=10');
+    // const data = await resp.json();
+    // console.log(data);
   }
 }
+
