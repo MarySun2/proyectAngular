@@ -1,1 +1,25 @@
-<p>by-country-page works!</p>
+<h2>Por Pais</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!-- SearhBox -->
+     <shared-search-box
+     (onValue)="searchCountry($event)"
+     placeholder="Buscar por Pais" >
+    </shared-search-box>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <!-- Tabla de Resultados -->
+    <ul>
+      <li *ngFor="let country of countries">
+        {{country.name.common}}-{{country.population}}
+      </li>
+    </ul>
+
+  </div>
+</div>
