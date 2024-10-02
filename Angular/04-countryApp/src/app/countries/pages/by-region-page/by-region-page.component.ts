@@ -14,8 +14,8 @@ public countries: Country[] = [];
 // Se Inyecta el servicio
 constructor(private countriesService: CountriesService) {}
 
-searchRegion(term: string): void {
-  this.countriesService.searchRegion(term)
+searchRegion(region: string): void {
+  this.countriesService.searchRegion(region)
   .subscribe(countries => {
     this.countries = countries;
   });
