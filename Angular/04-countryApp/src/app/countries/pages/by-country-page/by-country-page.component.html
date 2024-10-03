@@ -9,7 +9,7 @@
     <!-- El evento 'onValue' se emite cuando el usuario ingresa un valor en la caja de búsqueda -->
     <!-- El valor ingresado se pasa al método 'searchCountry($event)' del componente padre -->
     <shared-search-box
-      (onValue)="searchCountry($event)"
+      (onDebounce)="searchCountry($event)"
       placeholder="Buscar por Pais">
     </shared-search-box>
   </div>
@@ -19,7 +19,7 @@
 <div class="row">
   <div class="col">
     <hr>
-
+    <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
     <!-- Tabla de Resultados -->
     <!-- Se utiliza el componente 'countries-table' para mostrar los resultados de la búsqueda -->
     <!-- El componente 'countries-table' recibe la lista de países como entrada a través de '[countries]="countries"' -->

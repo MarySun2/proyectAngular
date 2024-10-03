@@ -1,6 +1,6 @@
 // Importa las clases y decoradores necesarios desde Angular core.
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { debounceTime, Subject } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { debounceTime, Subject, Subscription } from 'rxjs';
 
 // Decorador @Component que define la metadata del componente.
 @Component({
@@ -9,9 +9,11 @@ import { debounceTime, Subject } from 'rxjs';
   styles: `` // Estilos en línea para el componente, que en este caso está vacío.
 })
 // Clase que define el componente SearchBoxComponent.
-export class SearchBoxComponent  implements OnInit{
+export class SearchBoxComponent  implements OnInit, OnDestroy{
 
   private debouncer: Subject<string> = new Subject<string>();
+  private debouncerSuscription?: Subscription;
+
 
   // Decorador @Input permite que el valor 'placeholder' sea pasado desde un componente padre.
   @Input()
@@ -25,13 +27,17 @@ export class SearchBoxComponent  implements OnInit{
   public onDebounce = new EventEmitter<string>(); // Crea un EventEmitter que emitirá un valor de tipo string.
 
   ngOnInit(): void {
-      this.debouncer
+      this.debouncerSuscription = this.debouncer
       .pipe(
-        debounceTime(1000)
+        debounceTime(300)
       )
       .subscribe(value =>{
         this.onDebounce.emit( value );
       })
+  }
+
+  ngOnDestroy(): void {
+    this.debouncerSuscription?.unsubscribe();
   }
 
   // Método para emitir el valor ingresado a través del EventEmitter.

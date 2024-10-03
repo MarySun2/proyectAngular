@@ -12,6 +12,7 @@ export class ByCountryPageComponent {
 
   // Propiedad que almacena la lista de países obtenidos
   public countries: Country[] = [];
+  public isLoading: boolean = false;
 
   // Constructor que inyecta el servicio CountriesService
   constructor(private countriesService: CountriesService) {}
@@ -21,11 +22,14 @@ export class ByCountryPageComponent {
    * @param term - El término de búsqueda ingresado por el usuario
    */
   searchCountry(term: string): void {
+
+    this.isLoading = true;
     // Se llama al servicio para buscar países por el nombre ingresado.
     // El resultado de la búsqueda se suscribe y se asigna a la propiedad 'countries'.
     this.countriesService.searchCountry(term)
       .subscribe(countries => {
         this.countries = countries; // Almacena los países encontrados en la propiedad 'countries'
+        this.isLoading = false;
       });
   }
 }
