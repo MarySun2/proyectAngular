@@ -6,40 +6,42 @@ import { ByCountryPageComponent } from './pages/by-country-page/by-country-page.
 import { ByRegionPageComponent } from './pages/by-region-page/by-region-page.component';
 import { CountryPageComponent } from './pages/country-page/country-page.component';
 
+// Definición de las rutas para el módulo de países
 const routes: Routes = [
   {
-    path: 'by-capital',
+    path: 'by-capital', // Ruta para buscar países por capital
     component: ByCapitalPageComponent,
   },
 
   {
-    path: 'by-country',
+    path: 'by-country', // Ruta para buscar países por nombre
     component: ByCountryPageComponent,
   },
 
   {
-    path: 'by-region',
+    path: 'by-region', // Ruta para buscar países por región
     component: ByRegionPageComponent,
   },
 
   {
-    path: 'by/:id',
+    path: 'by/:id', // Ruta para mostrar detalles de un país específico
     component: CountryPageComponent,
   },
 
   {
-    path: '**',
+    path: '**', // Ruta comodín que redirige a la página por capital si no se encuentra ninguna coincidencia
     redirectTo: 'by-capital'
   }
-
 ];
 
+// Decorador NgModule para configurar el módulo de rutas
 @NgModule({
-  imports:[
-    RouterModule.forChild(routes)
+  imports: [
+    RouterModule.forChild(routes) // Configura las rutas para el módulo hijo
   ],
   exports: [
-    RouterModule,
+    RouterModule, // Exporta el RouterModule para que esté disponible en otros módulos
   ]
 })
 export class CountriesRoutingModule { }
+

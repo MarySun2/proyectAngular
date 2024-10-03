@@ -4,68 +4,39 @@ import { CountriesService } from '../../services/countries.service';
 import { switchMap } from 'rxjs';
 import { Country } from '../../interfaces/country';
 
-
+// Decorador que define al componente de Angular
 @Component({
-  selector: 'countries-country-page',
-  templateUrl: './country-page.component.html',
-  styles: ``
+  selector: 'countries-country-page', // Selector para usar este componente en plantillas HTML
+  templateUrl: './country-page.component.html', // Ruta del archivo HTML asociado al componente
+  styles: `` // Estilos específicos para este componente (vacío en este caso)
 })
+export class CountryPageComponent implements OnInit {
 
-export class CountryPageComponent implements OnInit  {
-
-  //propiedad
+  // Propiedad que almacenará la información del país seleccionado
   public country?: Country;
 
+  // Constructor que inyecta dependencias
   constructor(
-    //injeccion
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private countriesService: CountriesService,
+    private activatedRoute: ActivatedRoute, // Servicio para acceder a los parámetros de la ruta activa
+    private router: Router, // Servicio para navegar entre rutas
+    private countriesService: CountriesService, // Servicio para acceder a la lógica de negocio relacionada con los países
   ) {}
 
-  //1. forma de hacerlo
-  // ngOnInit(): void {
-  //   this.activatedRoute.params
-  //   // .subscribe((params: any) => {
-  //     .subscribe(({id}) => {
-
-  //     this.countriesService.searchCountryByAlphaCode( id )
-  //     .subscribe( country => {
-  //       console.log( {country})
-  //     });
-  //   });
-  // }
-  // 2. forma de hacerlo
-  // implementacion del OnInit y un observable held
-  // ngOnInit(): void {
-  //   this.activatedRoute.params
-  //   // .subscribe((params: any) => {
-  //     .subscribe(({id}) => {
-
-  //     this.countriesService.searchCountryByAlphaCode( id )
-  //     .subscribe( country => {
-  //       console.log( {country})
-  //     });
-  //   });
-  // }
-
-  // 3. forma de hacerlo
+  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
+    // Se suscribe a los parámetros de la ruta activa
     this.activatedRoute.params
-
-    .pipe(
-      switchMap (({id}) => this.countriesService.searchCountryByAlphaCode( id )),
-    )
-
-      .subscribe( country => {
-
-        if ( !country ) {
+      .pipe(
+        // Usa switchMap para cambiar de un observable de parámetros a un observable de país
+        switchMap(({ id }) => this.countriesService.searchCountryByAlphaCode(id))
+      )
+      .subscribe(country => {
+        // Si no se encuentra el país, redirige a la ruta base
+        if (!country) {
           return this.router.navigateByUrl('');
         }
-        // console.log('TENEMOS UN PAIS');
+        // Si se encuentra un país, se asigna a la propiedad 'country'
         return this.country = country;
-        return;
       });
-
   }
 }

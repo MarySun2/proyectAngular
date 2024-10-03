@@ -1,37 +1,47 @@
-<div *ngIf="countries.length === 0; else table"  class="alert alert-warning text-center">
-  No hay paises que mostrar
+<!--
+  Sección de alerta que se muestra cuando no hay países en la lista.
+  *ngIf verifica si el array 'countries' está vacío.
+-->
+<div *ngIf="countries.length === 0; else table" class="alert alert-warning text-center">
+  No hay países que mostrar
 </div>
 
+<!-- Plantilla alternativa que se muestra cuando sí hay países en la lista -->
 <ng-template #table>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Icon</th>
-      <th>Bandera</th>
-      <th>Nombre</th>
-      <th>Capital</th>
-      <th>Poblacion</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let country of countries; let i = index">
-      <td>{{i + 1}}</td>
-      <td>
-        {{country.flag}}
-      </td>
-      <td>
-        <img [src]="country.flags.svg" [alt]="country.name.common">
-      </td>
-      <td>{{country.name.common}}</td>
-      <td>{{country.capital}}</td>
-      <td>{{country.population | number}}</td>
-      <td>{{country.capital}}</td>
-      <td>
-        <a [routerLink]="['/countries/by', country.cca3]">Info</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Tabla que muestra la información de los países -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Icon</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th>Más información</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--
+        Se recorre el array 'countries' con *ngFor para mostrar cada país en una fila de la tabla.
+        'let i = index' nos proporciona el índice del elemento actual en la lista para usarlo como número de fila.
+      -->
+      <tr *ngFor="let country of countries; let i = index">
+        <td>{{i + 1}}</td> <!-- Índice del país (comienza desde 1) -->
+        <td>{{country.flag}}</td> <!-- Icono del país (usualmente un emoji de bandera) -->
+        <td>
+          <!-- Imagen de la bandera del país -->
+          <img [src]="country.flags.svg" [alt]="country.name.common">
+        </td>
+        <td>{{country.name.common}}</td> <!-- Nombre común del país -->
+        <td>{{country.capital}}</td> <!-- Capital del país -->
+        <td>{{country.population | number}}</td> <!-- Población del país, con formato de número -->
+        <td>
+          <!-- Enlace que lleva a más información sobre el país utilizando 'cca3' como parámetro de la ruta -->
+          <a [routerLink]="['/countries/by', country.cca3]">Info</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-template>
+

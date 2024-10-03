@@ -1,3 +1,4 @@
+// Definición de la interfaz principal 'Country', que representa un país con todos sus detalles relevantes herramienta (paste json as code)
 export interface Country {
   name:         Name;
   tld:          string[];

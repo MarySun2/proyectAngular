@@ -1,25 +1,39 @@
 <h2>Por Pais</h2>
 <hr>
 
+<!-- Contenedor para la caja de búsqueda -->
 <div class="row">
   <div class="col">
-    <!-- SearhBox -->
-     <shared-search-box
-     (onValue)="searchCountry($event)"
-     placeholder="Buscar por Pais" >
+    <!-- Componente de Búsqueda -->
+    <!-- 'shared-search-box' es un componente reutilizable que permite al usuario realizar búsquedas -->
+    <!-- El evento 'onValue' se emite cuando el usuario ingresa un valor en la caja de búsqueda -->
+    <!-- El valor ingresado se pasa al método 'searchCountry($event)' del componente padre -->
+    <shared-search-box
+      (onValue)="searchCountry($event)"
+      placeholder="Buscar por Pais">
     </shared-search-box>
   </div>
 </div>
 
+<!-- Contenedor para los resultados de la búsqueda -->
 <div class="row">
   <div class="col">
     <hr>
+
     <!-- Tabla de Resultados -->
-    <!-- <ul>
+    <!-- Se utiliza el componente 'countries-table' para mostrar los resultados de la búsqueda -->
+    <!-- El componente 'countries-table' recibe la lista de países como entrada a través de '[countries]="countries"' -->
+    <!-- 'countries' es una propiedad del componente padre que contiene los resultados de la búsqueda -->
+    <countries-table [countries]="countries"></countries-table>
+
+    <!-- Comentario: Ejemplo alternativo usando una lista no ordenada -->
+    <!--
+    <ul>
       <li *ngFor="let country of countries">
         {{country.name.common}} - {{country.population}}
       </li>
-    </ul> -->
-    <countries-table [countries]="countries"></countries-table>
+    </ul>
+    -->
   </div>
 </div>
+
