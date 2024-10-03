@@ -19,7 +19,7 @@ export class CountriesService {
     return this.http.get<Country[]>(url)
     .pipe(
       catchError(error => of([])), // Captura cualquier error y devuelve null
-      delay(2000), // Retraza el tiempo de la consulta
+      //delay(2000), // Retraza el tiempo de la consulta
     );
   }
 
