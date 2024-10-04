@@ -19,6 +19,9 @@ export class SearchBoxComponent  implements OnInit, OnDestroy{
   @Input()
   public placeholder: string = ''; // Propiedad pública con valor por defecto vacío.
 
+  @Input()
+  public initialValue: string = '';
+
   // Decorador @Output para emitir eventos hacia el componente padre.
   @Output()
   public onValue = new EventEmitter<string>(); // Crea un EventEmitter que emitirá un valor de tipo string.
