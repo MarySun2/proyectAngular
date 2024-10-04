@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country';
 
@@ -8,14 +8,20 @@ import { Country } from '../../interfaces/country';
   templateUrl: './by-country-page.component.html', // Ruta del archivo HTML asociado al componente
   styles: `` // Estilos específicos para este componente (vacío en este caso)
 })
-export class ByCountryPageComponent {
+export class ByCountryPageComponent implements OnInit {
 
   // Propiedad que almacena la lista de países obtenidos
   public countries: Country[] = [];
   public isLoading: boolean = false;
+  public initialValue: string = '';
+
 
   // Constructor que inyecta el servicio CountriesService
   constructor(private countriesService: CountriesService) {}
+  ngOnInit(): void {
+    this.countries = this.countriesService.cacheStore.byCountries.countries;
+    this.initialValue = this.countriesService.cacheStore.byCountries.term;
+  }
 
   /**
    * Método para buscar países según el término de búsqueda ingresado.

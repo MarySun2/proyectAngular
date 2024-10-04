@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Country } from '../interfaces/country';
 import { CacheStore } from '../interfaces/cache-store.interface';
+import { Region } from '../interfaces/region.type';
 
 // Decorador Injectable que permite la inyección de este servicio en otros componentes o servicios
 @Injectable({
@@ -56,14 +57,20 @@ export class CountriesService {
   searchCountry(term: string): Observable<Country[]> {
 
     const url = `${this.apiUrl}/name/${term}`; // Construye la URL para la solicitud
-    return this.getCountriesRequest(url);
+    return this.getCountriesRequest(url)
+    .pipe(
+      tap( countries => this.cacheStore.byCountries = { term, countries })
+    );
   }
 
   // Método para buscar países por región
-  searchRegion(region: string): Observable<Country[]> {
+  searchRegion(region: Region): Observable<Country[]> {
 
     const url = `${this.apiUrl}/region/${region}`; // Construye la URL para la solicitud
-    return this.getCountriesRequest(url);
+    return this.getCountriesRequest(url)
+    .pipe(
+      tap( countries => this.cacheStore.byRegion = { region, countries })
+    );
   }
 }
 

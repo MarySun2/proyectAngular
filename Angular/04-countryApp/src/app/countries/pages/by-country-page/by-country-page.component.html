@@ -10,6 +10,7 @@
     <!-- El valor ingresado se pasa al método 'searchCountry($event)' del componente padre -->
     <shared-search-box
       (onDebounce)="searchCountry($event)"
+      [initialValue]= "initialValue"
       placeholder="Buscar por Pais">
     </shared-search-box>
   </div>
