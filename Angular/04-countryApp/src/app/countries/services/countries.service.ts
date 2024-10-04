@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, delay, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Country } from '../interfaces/country';
+import { CacheStore } from '../interfaces/cache-store.interface';
 
 // Decorador Injectable que permite la inyección de este servicio en otros componentes o servicios
 @Injectable({
@@ -11,6 +12,12 @@ export class CountriesService {
 
   // URL base de la API de países
   private apiUrl: string = 'https://restcountries.com/v3.1';
+
+  public cacheStore: CacheStore ={
+    byCapital: { term: '', countries: [] },
+    byCountries: { term: '', countries: [] },
+    byRegion: { region: '', countries: [] }
+  }
 
   // Inyección del servicio HttpClient para realizar solicitudes HTTP
   constructor(private http: HttpClient) {}
