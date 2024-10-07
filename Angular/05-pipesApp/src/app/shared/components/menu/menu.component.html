@@ -1,12 +1,10 @@
-<p-menu [model]="menuItems"></p-menu>
-
+<p-menubar [model]="menuItems"></p-menubar>
+<br>
 <hr>
-<div class="card flex justify-content-center">
-  <p-menu [model]="items" />
-</div>
+<br>
 
-<hr>
-<div class="card flex justify-content-center">
-  <p-menu #menu [model]="items" [popup]="true" />
-  <p-button (onClick)="menu.toggle($event)" icon="pi pi-ellipsis-v"/>
+<div class="card">
+  <p-menubar [model]="items">
+    <img src="../../../../assets/favicon.ico" alt="ico.ico">
+  </p-menubar>
 </div>
