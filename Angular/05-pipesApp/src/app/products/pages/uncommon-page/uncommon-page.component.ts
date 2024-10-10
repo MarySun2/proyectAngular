@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Person } from '../../../../../../01-typescript-intro/src/topics/08-classes';
 
 @Component({
   selector: 'app-uncommon-page',
@@ -35,4 +36,12 @@ export class UncommonPageComponent {
   deleteClient(): void {
     this.clients.shift();
   }
+
+  // keyValue Pipe
+  public person = {
+    name: 'Fernando',
+    age: 36,
+    address: 'Ottawa, Canada'
+  }
+
 }
