@@ -41,6 +41,17 @@
   <div class="col-12 md:col-6">
     <p-fieldset legend="Slice Pipe" [toggleable]="true">
       <!-- contenido -->
+       <b>Original</b>
+       <pre>{{clients}}</pre>
+      <!-- empieza desde la posicion y : se cuenta en la siguiente  -->
+       <b>Slice:0:2</b>
+       <pre>{{ clients | slice:0:2 }}</pre>
+
+       <b>Slice:1:2</b>
+       <pre>{{ clients | slice:1:2 }}</pre>
+
+       <b>Slice:0:-2</b>
+       <pre>{{ clients | slice:0:-3 }}</pre>
     </p-fieldset>
   </div>
 
