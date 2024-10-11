@@ -2,7 +2,7 @@
   <h1>Pipes Personalizados</h1>
   <p>
     <!-- Pipes Personalizados -Creados por {{'nosotros' | toggleCase: true:123:'si'}} -->
-    Pipes Personalizados -Creados por {{'nosotros' | toggleCase: true}}
+    Pipes Personalizados -Creados por {{'nosotros' | toggleCase:isUpperCase }}
   </p>
 </p-panel>
 
@@ -15,7 +15,11 @@
     </div> -->
     <div class="p-toolbar-group-start">
 
-      <p-button label="ToggleCase" icon="pi pi-search" class="mr-2"></p-button>
+      <p-button
+      label="ToggleCase"
+      icon="pi pi-arrow-right-arrow-left"
+      (onClick)="toggleUpperCase()"
+      ></p-button>
     </div>
     <div class="p-toolbar-group-end">
 

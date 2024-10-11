@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class OrderComponent {
 
+  // Propiedad
+  public isUpperCase: boolean = false;
+
+  //Metodo
+  toggleUpperCase(): void {
+    this.isUpperCase =!this.isUpperCase; // Cambia el estado de la propiedad isUpperCase
+
+  }
+
   // para el Save funcionando del p-splitButton
 //   items: any[] = [];
 
