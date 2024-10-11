@@ -11,7 +11,7 @@ export class OrderComponent {
   // Propiedad
   public isUpperCase: boolean = false;
 
-  //Fracmento de la tabla mas complejo
+  //Fracmento de la tabla mas complejo hecho por IA
   public cols: TableColumn[] = [
     { field: 'name', header: 'Name' },
     { field: 'canFly', header: 'Can Fly' },
