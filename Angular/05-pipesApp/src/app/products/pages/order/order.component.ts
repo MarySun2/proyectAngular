@@ -10,6 +10,7 @@ export class OrderComponent {
 
   // Propiedad
   public isUpperCase: boolean = false;
+  public orderBy?: keyof Hero;
 
   //Fracmento de la tabla mas complejo hecho por IA
   public cols: TableColumn[] = [
@@ -89,6 +90,8 @@ export class OrderComponent {
 //   { name: 'Product 3', price: 300, category: 'Category 3' }
 // ];
 
-
+ChangeOrder( value: keyof Hero ) {
+  this.orderBy = value;  // Cambia el valor de la propiedad orderBy
+}
 
 }
