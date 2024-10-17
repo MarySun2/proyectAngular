@@ -4,13 +4,36 @@
 
   </li>
 </ul> -->
-<!-- HECHO POR  MI ngStyle -->
-<h1 [ngStyle]="{'color': 'black'}">Listado de Heroes</h1>
+<!-- Primera forma sin spinner (HECHO POR  MI ngStyle) -->
+<div>
+  <h1 class="pt-2 m-2" [ngStyle]="{'color': 'black'}">Listado de Heroes</h1>
 <mat-divider></mat-divider>
 
-<div class="grid bm-8 pt-2">
+<div class="grid bm-8 pt-2 m-2">
   <div *ngFor="let hero of heroes"
   class="col-12 sm:col-4 md:col-2">
   <heroes-hero-card [hero]="hero"></heroes-hero-card>
 </div>
 </div>
+
+</div>
+
+<!-- Otra forma con spinner -->
+<!-- <ng-template #divLoading>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+  </ng-template>
+
+<div *ngIf="heroes.length > 0; else divLoading" class="grid">
+  <h1 [ngStyle]="{'color': 'black'}">Listado de Heroes</h1>
+  <mat-divider></mat-divider>
+
+  <div class="grid bm-8 pt-2">
+    <div *ngFor="let hero of heroes" class="col-12 sm:col-4 md:col-2">
+      <heroes-hero-card [hero]="hero"></heroes-hero-card>
+    </div>
+  </div>
+</div> -->
