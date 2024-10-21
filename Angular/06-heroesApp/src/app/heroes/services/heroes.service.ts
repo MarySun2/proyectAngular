@@ -6,8 +6,7 @@ import { catchError, Observable, of } from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root'})
 export class HeroesService {
 
   private baseUrl: string = environments.baseUrl;
@@ -26,4 +25,7 @@ export class HeroesService {
       );
   }
 
+  getSuggestions(query: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`/heroes?q=${ query }&_limit=6`)
+  }
 }
