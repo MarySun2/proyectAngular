@@ -13,7 +13,7 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class SearchPageComponent {
 
-  public searchInput = new FormControl('');
+  public searchInput = new FormControl(''); // Esto es un formulario Reactivo
   public heroes: Hero[] = [];
   public selectedHero?: Hero;
 
