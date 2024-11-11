@@ -1,7 +1,7 @@
 <h1 [ngStyle]="{'color': 'black'}">
-  Editar / Agregar
-  Heroe
-  <span>Superman</span>
+  {{ currentHero.id ? 'Editar' :'Agregar'}}
+  Heroe Llamado:
+  <span *ngIf="currentHero.id">{{ currentHero.superhero }}</span>
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -77,9 +77,10 @@
 
         <div class="flex justify-content-between" >
           <button
-        mat-flat-button
-        color="warn"
-        >
+            *ngIf="currentHero.id"
+            mat-flat-button
+            color="warn"
+            >
         <mat-icon>delete</mat-icon>
           Borrar
         </button>

@@ -3,8 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpParams } from '@angular/common/http';
-import { Subscription, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-page',
@@ -34,6 +34,7 @@ export class NewPageComponent implements OnInit {
     private heroesService : HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private snackbar: MatSnackBar,
   ) {}
 
   get currentHero() : Hero {
@@ -70,7 +71,7 @@ export class NewPageComponent implements OnInit {
     if (this.currentHero.id) {
       this.heroesService.updateHero(this.currentHero)
       .subscribe( hero =>{
-        //Todo: Mostrar snackbar
+        this.showSnackbar(`$ { hero.superhero } Updated!`);
       });
 
       return;
@@ -78,12 +79,17 @@ export class NewPageComponent implements OnInit {
 
     this.heroesService.addHero(this.currentHero)
     .subscribe(hero =>{
-      //Todo: Mostrar snackbar, y navegar a /heroes/edit/ hero.id
+      this.router.navigate(['/heroes', hero.id]);
+      this.showSnackbar(`$ { hero.superhero } Created!`);
     });
-
-    //this.heroesService.updateHero();
-
   }
-   // Resetear el formulario
+
+  // Método
+showSnackbar(message: string): void {
+  this.snackbar.open(message, 'done', {
+    duration: 2500,
+  })
+}
+
 
 }
