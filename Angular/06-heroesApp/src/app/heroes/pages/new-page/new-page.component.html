@@ -100,11 +100,15 @@
 
   <div class="col-12 sm:col-6">
     <mat-card>
-      <img src="" alt="Imagen del Heroe" mat-card-image>
+      <img [src]="currentHero | heroImage" alt="Imagen del Heroe" mat-card-image>
     </mat-card>
   </div>
 
 </div>
+
+<!-- <pre>
+  {{currentHero | json }}
+</pre> -->
 
 
 
