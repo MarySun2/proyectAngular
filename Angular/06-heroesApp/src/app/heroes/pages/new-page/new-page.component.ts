@@ -23,5 +23,15 @@ export class NewPageComponent {
   public publishers = [
     {id: 'DC Comics', desc: 'Dc - Comics' },
     {id: 'Marvel Comics', desc: 'Marvel - Comics' },
-  ]
+  ];
+
+  //Metodo
+  onSubmit():void {
+    console.log({
+      formIsValid: this.heroForm.valid,
+      value: this.heroForm.value,
+    })
+  }
+   // Resetear el formulario
+
 }
