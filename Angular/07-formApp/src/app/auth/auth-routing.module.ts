@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+    {path: 'sign-up', component: RegisterPageComponent},
+    {path: '**', redirectTo: 'sign-up'},
+    ]
+  }
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: []
 })
 export class AuthRoutingModule { }
