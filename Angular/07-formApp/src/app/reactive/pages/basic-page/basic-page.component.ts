@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-//Nombre del producto
-const rtx5090 = {
-  name: 'RTX 5090',
-  price: '2500',
-  inStorage: '6',
-}
+// //Nombre del producto
+// const rtx5090 = {
+//   name: 'RTX 5090',
+//   price: '2500',
+//   inStorage: '6',
+// }
 
 @Component({
   templateUrl: './basic-page.component.html',
@@ -34,12 +34,15 @@ export class BasicPageComponent implements OnInit {
       inStorage: [0, [Validators.required, Validators.min(0) ] ],
     });
 
-    this.myForm.reset( rtx5090);
+    // this.myForm.reset( rtx5090);
   }
 
     onSave():void {
 
-      if ( this.myForm.invalid ) return;
+      if ( this.myForm.invalid ) {
+        this.myForm.markAllAsTouched();
+        return;
+      }
 
       console.log(this.myForm.value);
 
