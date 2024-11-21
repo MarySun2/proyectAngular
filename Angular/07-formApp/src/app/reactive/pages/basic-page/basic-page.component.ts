@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './basic-page.component.html',
@@ -22,13 +22,16 @@ export class BasicPageComponent implements OnInit {
   ngOnInit(): void {
     // Inicializa el formulario en ngOnInit
     this.myForm = this.fb.group({
-      name: [''],
-      price: [0],
-      inStorage: [0],
+      name: ['', [Validators.required, Validators.minLength(3) ] ],
+      price: [0, [Validators.required, Validators.min(0) ] ],
+      inStorage: [0, [Validators.required, Validators.min(0) ] ],
     });
   }
 
     onSave():void {
+
+      if ( this.myForm.invalid ) return;
+
       console.log(this.myForm.value);
     }
 }
