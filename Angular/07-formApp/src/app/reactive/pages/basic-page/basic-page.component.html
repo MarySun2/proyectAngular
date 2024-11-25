@@ -16,21 +16,23 @@
                            formControlName="name"
                            placeholder="Nombre del producto">
 
-                    <span *ngIf="myForm.controls['name'].getError('required') && myForm.controls['name'].touched"
+                    <!-- <span *ngIf="myForm.controls['name'].getError('required') && myForm.controls['name'].touched" -->
+                      <span *ngIf="isValidField('name')"
                           class="form-text text-danger">
-                        <!-- Debe de ser de 3 letras -->
-                        Este Campo es requerido
+                          {{getFieldError('name')}}
                     </span>
 
-                    <span *ngIf="myForm.controls['name'].getError('minlength') && myForm.controls['name'].touched"
+
+                     <!-- <span *ngIf="myForm.controls['name'].getError('minlength') && myForm.controls['name'].touched"
                            class="form-text text-danger">
-                      <!-- Debe de ser de 3 letras -->
+                      Debe de ser de 3 letras
                       Este Campo requiere minimo 3 letras
-                  </span>
+                    </span> -->
+
                 </div>
             </div>
 
-            <!-- Campo de producto -->
+            <!-- Campo de Precios -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
@@ -38,7 +40,9 @@
                            class="form-control"
                            formControlName= "price"
                            placeholder="Precio del producto">
-                    <span class="form-text text-danger">
+
+                    <span *ngIf="isValidField('price')"
+                    class="form-text text-danger">
                         El precio debe de ser 0 o mayor
                     </span>
                 </div>
@@ -53,7 +57,8 @@
                            formControlName="inStorage"
                            placeholder="Existencias del producto">
 
-                    <span class="form-text text-danger">
+                    <span *ngIf="isValidField('price')"
+                    class="form-text text-danger">
                          Las existencias deben de ser 0 o mayor
                     </span>
                 </div>
