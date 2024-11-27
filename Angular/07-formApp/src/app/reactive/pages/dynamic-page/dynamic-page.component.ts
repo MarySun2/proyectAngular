@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './dynamic-page.component.html',
@@ -8,6 +8,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DynamicPageComponent implements OnInit {
 
   public myForm!: FormGroup; // Declara la variable sin inicializar
+
+  public newFavorite: FormControl = new FormControl('', Validators.required);
 
   constructor(private fb: FormBuilder ) {}
 
@@ -52,6 +54,18 @@ export class DynamicPageComponent implements OnInit {
       return null;
     }
 
+    onAddToFavorites():void {
+
+      if ( this.newFavorite.invalid) return;
+      const newGame = this.newFavorite.value;
+
+      this.favoriteGames.push(
+        this.fb.control(newGame, Validators.required)  // Create new FormControl with validation.
+      );
+
+      this.newFavorite.reset('');  // Reset input field.
+    }
+
     onDeleteFavorite( index: number ): void {
       this.favoriteGames.removeAt(index);  // Remove game from form array.
     }
@@ -63,6 +77,7 @@ export class DynamicPageComponent implements OnInit {
       return;  // Form is invalid, stop processing.
     }
     console.log(this.myForm.value);
+    (this.myForm.controls['favoriteGames'] as FormArray ) =this.fb.array([]);
     this.myForm.reset();  // Reset form.
   }
 
