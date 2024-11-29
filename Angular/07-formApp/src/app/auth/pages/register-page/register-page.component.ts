@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as customValidators from '../../../shared/validators/validators';
+// import * as customValidators from '../../../shared/validators/validators';
+import { ValidatorsService } from '../../../shared/service/validators.service';
 
 @Component({
   templateUrl: './register-page.component.html',
@@ -18,12 +19,16 @@ export class RegisterPageComponent implements OnInit {
 
   public myForm!: FormGroup; // Declara la variable sin inicializar
 
-  constructor( private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private validatorsService: ValidatorsService
+  ) {}
+
   ngOnInit(): void {
     this.myForm = this.fb.group({
-       name:['', [Validators.required, Validators.pattern (customValidators.firstNameAndLastnamePattern)]],
-       email:['', [Validators.required, Validators.pattern (customValidators.emailPattern) ]],
-       username:['', [Validators.required, customValidators.cantBeStrider ]],
+       name:['', [Validators.required, Validators.pattern (this.validatorsService.firstNameAndLastnamePattern)]],
+       email:['', [Validators.required, Validators.pattern (this.validatorsService.emailPattern) ]],
+       username:['', [Validators.required, this.validatorsService.cantBeStrider ]],
        password:['', [Validators.required, Validators.minLength(6) ]],
        confirmPassword:['', [Validators.required, Validators.minLength(6) ]]
     });
@@ -31,6 +36,7 @@ export class RegisterPageComponent implements OnInit {
 
   isValidField( field: string ){
     //TODO OBTENER VALIDACION DESDE UN SERVICIO
+    return this.validatorsService.isValidField(this.myForm, field);
   }
 
   onSumit() {
