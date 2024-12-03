@@ -4,14 +4,29 @@
 <form [formGroup]="myForm">
 
   <!--Region-->
-  <div class="col">
-    <label class="form-label">Continente:</label>
-    <select formControlName="region" class="form-control">
-      <option value="">-- Seleccion Continente --</option>
-      <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Continente:</label>
+      <select formControlName="region" class="form-control">
+        <option value="">-- Seleccion Continente --</option>
+        <option *ngFor="let region of regions" [value]="region">{{region}}</option>
 
-    </select>
+      </select>
+    </div>
   </div>
+
+  <!--Countriess-->
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Paìs:</label>
+      <select formControlName="country" class="form-control">
+        <option value="">-- Seleccion Pais --</option>
+        <!-- <option *ngFor="let region of regions" [value]="region">{{region}}</option> -->
+
+      </select>
+    </div>
+  </div>
+
 
 </form>
 
