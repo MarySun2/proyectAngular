@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+//Laizy Load
+const routes: Routes = [
+{
+  path:'',
+  loadChildren:()=> import('./maps/maps.module').then(m => m.MapsModule),
+},
+{
+  path:'**',
+  redirectTo: 'maps',
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
