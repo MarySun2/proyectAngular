@@ -9,7 +9,12 @@ import { MarkersPageComponent } from './pages/markers-page/markers-page.componen
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 import { MapsLayoutComponent } from './layout/maps-layout/maps-layout.component';
+// Importa el environment
+import { environment } from '../../environments/environments'; // hecho por mi
 
+//Mapbox
+import mapboxgl from 'mapbox-gl';
+mapboxgl.accessToken = environment.mapbox_key; // Para no mostrar el codigo del token hecho por mi
 
 @NgModule({
   declarations: [
