@@ -28,14 +28,37 @@ export class MarkersPageComponent {
     // const markerHtml = document.createElement('div'); //Marcador Personalizado
     // markerHtml.innerHTML='Fernando Herrera'
 
-    const marker =new Marker({
-      color: 'green',
-      // element: markerHtml Marcador personalizado
-  })
-    .setLngLat( this.currentLngLat )
+  //   const marker =new Marker({
+  //     color: 'green',
+       // element: markerHtml Marcador personalizado
+  // })
+  //   .setLngLat( this.currentLngLat )
+  //   .addTo( this.map );
+  }
+
+  //Metodos
+
+  createMarker() {
+
+    if (!this.map ) return;
+
+    const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16)); // Genera un hexadecimal
+    const LngLat = this.map.getCenter();
+
+    this.addMarker(LngLat, color);
+  }
+
+
+  addMarker(lngLat: LngLat, color: string = 'green') {
+    if (!this.map ) return;
+
+    // Creas el marcador
+    const marker = new Marker ({
+      color: color,
+      draggable: true,
+    })
+    .setLngLat( lngLat)
     .addTo( this.map );
-
-
   }
 
 }
