@@ -75,9 +75,10 @@ export class MarkersPageComponent {
     this.markers.push({ color, marker, });
     this.saveToLocalStorage();
 
+    // dragend--
     marker.on('dragend', () => this.saveToLocalStorage() );
 
-    // dragend
+
   }
 
   deleteMarker( index: number ) {
