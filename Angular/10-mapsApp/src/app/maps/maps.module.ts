@@ -14,6 +14,7 @@ import { environment } from '../../environments/environments'; // hecho por mi
 
 //Mapbox
 import mapboxgl from 'mapbox-gl';
+import { CounterAloneComponent } from '../alone/components/counter-alone/counter-alone.component';
 mapboxgl.accessToken = environment.mapbox_key; // Para no mostrar el codigo del token hecho por mi
 
 @NgModule({
@@ -28,7 +29,8 @@ mapboxgl.accessToken = environment.mapbox_key; // Para no mostrar el codigo del 
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
+    MapsRoutingModule,
+    CounterAloneComponent // porque es un stanalone siempre va en import
   ]
 })
 export class MapsModule { }
