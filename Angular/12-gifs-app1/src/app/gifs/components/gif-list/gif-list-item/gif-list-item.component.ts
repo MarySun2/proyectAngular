@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'gif-list-item',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class GifListItemComponent {
+  // es una señal debe ir entre parentesis
+  imageUrl = input.required<string>();
 
 }
