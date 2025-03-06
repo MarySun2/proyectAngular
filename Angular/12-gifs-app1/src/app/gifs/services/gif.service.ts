@@ -8,31 +8,32 @@ import { GifMapper } from '../mapper/gif.mapper';
 @Injectable({
   providedIn: 'root'
 })
-export class GifsService {
+export class GifService {
 
   //propiedades
   private http = inject (HttpClient); // lo cual se utiliza el cliente aca es decir se injecta
-  trendingGifs = signal <Gif[]>([]) // esto viene de la interface creada llamada gif.interface
+
+   trendingGifs = signal<Gif[]>([]); // esto viene de la interface creada llamada gif.interface
+   trendingGifsLoading = signal(true);
 
   constructor() {
     this.loadTrendingGifs();
+    console.log("Servicio Creado");
    }
 
-  loadTrendingGifs() {
-
-    this.http.get <GiphyResponse> (`${ environment.giphyUrl }/gifs/trending`,
-      {
+   loadTrendingGifs() {
+    this.http
+      .get<GiphyResponse>(`${environment.giphyUrl}/gifs/trending`, {
         params: {
           api_key: environment.giphyApiKey,
           limit: 20,
-        }
-      }).subscribe( (resp) => {
-        // console.log({ resp });
-        // resp.data[0].images.original.url forma de hacerlo
-        const gifs = GifMapper.mapGiphyItemToGifArray(resp.data);
+        },
+      })
+      .subscribe((resp) => {
+        const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data);
         this.trendingGifs.set(gifs);
-        console.log(gifs);
-
-      });  // Para que la peticion http se dispare hay que suscribirse y se manda un colbat
+        this.trendingGifsLoading.set(false);
+        console.log({ gifs });
+      });
   }
 }
