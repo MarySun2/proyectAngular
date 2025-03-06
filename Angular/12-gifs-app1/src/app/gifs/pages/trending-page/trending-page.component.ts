@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { GifListComponent } from "../../components/gif-list/gif-list.component";
+import { GifsService } from '../../services/gifs.service';
 
 //Deberia estar en un servicio
 const imageUrls: string[] = [
@@ -26,4 +27,6 @@ const imageUrls: string[] = [
 })
 export default class TrendingPageComponent {
   gifs = signal(imageUrls);
+
+  gifService = inject (GifsService) // se importa el servicio
 }
