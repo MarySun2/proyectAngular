@@ -34,6 +34,21 @@ export default class TrendingPageComponent {
 
   onScroll(event: Event ) {
     const scrollDiv = this.scrollDivRef() ?.nativeElement;
-    console.log(scrollDiv);
+    // console.log(scrollDiv);
+
+    if( !scrollDiv )return;
+
+    const scrollTop = scrollDiv.scrollTop;
+    const clientHeight = scrollDiv.clientHeight;  // pixeles 690
+    const scrollHeight = scrollDiv.scrollHeight; // pixeles 907
+
+    const isAtBottom = scrollTop + clientHeight + 300 >= scrollHeight;
+
+    // console.log(isAtBottom);
+
+
+    if( isAtBottom ) {
+      this.gifService.loadTrendingGifs();
+    }
   }
 }
