@@ -1,6 +1,8 @@
-import {Component } from '@angular/core';
+import {Component, inject, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from '../../components/search-input/country-list/country-list.component';
+import { CountryService } from '../../services/country.service';
+import { RESTCountry } from '../../interfaces/rest-countries.interfaces';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -11,7 +13,23 @@ import { CountryListComponent } from '../../components/search-input/country-list
 })
 export class ByCapitalPageComponent {
 
-  // onSearch(value: string) {
-  //   console.log({value})
-  // }
+  //injectar el servicio
+  countryService =inject (CountryService);
+
+  isLoading = signal(false)
+  isError = signal<string|null>(null)
+  countries = signal<RESTCountry[]>([]);
+
+   onSearch(query: string) {
+    if ( this.isLoading() ) return;
+
+    this.isLoading.set(true);
+    this.isError.set(null);
+
+    this.countryService.searchByCapital(query)
+    .subscribe( (countries) => {
+      this.isLoading.set(false);
+      this.countries.set(countries);
+    });
+   }
 }
