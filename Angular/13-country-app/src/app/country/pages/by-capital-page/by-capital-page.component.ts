@@ -1,8 +1,9 @@
-import {Component, inject, signal } from '@angular/core';
+import {Component, inject, resource, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from '../../components/search-input/country-list/country-list.component';
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interface';
+import { firstValueFrom, Observable } from 'rxjs';
 
 
 @Component({
@@ -16,33 +17,48 @@ export class ByCapitalPageComponent {
 
   //injectar el servicio
   countryService =inject (CountryService);
+  //Otra Forma de hacerlo
+  query = signal('');
 
-  isLoading = signal(false)
-  isError = signal<string|null>(null)
-  countries = signal<Country[]>([]);
+  countryResource = resource ({
+    request: () => ({ query: this.query() }),
+    loader: async ({ request }) => {
 
-   onSearch(query: string) {
-    if ( this.isLoading() ) return;
+      if (!request.query ) return [];
 
-    this.isLoading.set(true);
-    this.isError.set(null);
+      return await firstValueFrom (
+        this.countryService.searchByCapital(request.query)
+      )
 
-    this.countryService.searchByCapital(query)
-    .subscribe({
-      next: ( countries ) => {
-        this.isLoading.set(false);
-        this.countries.set(countries);
-      },
+    }
+  })
 
-      error: (error) => {
-        this.isLoading.set(false);
-        this.countries.set([]);
-        this.isError.set(error);
+  // Version 18 una forma de hacerlo
+  // isLoading = signal(false)
+  // isError = signal<string|null>(null)
+  // countries = signal<Country[]>([]);
 
-      },
+  //  onSearch(query: string) {
+  //   if ( this.isLoading() ) return;
+
+  //   this.isLoading.set(true);
+  //   this.isError.set(null);
+
+  //   this.countryService.searchByCapital(query)
+  //   .subscribe({
+  //     next: ( countries ) => {
+  //       this.isLoading.set(false);
+  //       this.countries.set(countries);
+  //     },
+
+  //     error: (error) => {
+  //       this.isLoading.set(false);
+  //       this.countries.set([]);
+  //       this.isError.set(error);
+  //     },
       // const c = CountryMapper.mapRestCountryArrayToCountryArray(countries)
       // console.log(c);
 
-    });
-   }
-}
+    }
+
+
