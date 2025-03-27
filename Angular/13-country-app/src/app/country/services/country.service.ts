@@ -19,9 +19,11 @@ export class CountryService {
 
   searchByCapital(query: string): Observable<Country[]>
   {
+    const url = `${API_URL}/capital/${query}`;
+
     query =query.toLowerCase();
 
-    return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`)
+    return this.http.get<RESTCountry[]>(url)
     .pipe(
       map( (resCountries) =>
         CountryMapper.mapRestCountryArrayToCountryArray(resCountries)),
@@ -32,6 +34,23 @@ export class CountryService {
         );
       })
     );
+  }
 
+  searchByCountry(query: string): Observable<Country[]>
+  {
+    query =query.toLowerCase();
+
+    return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`)
+
+    .pipe(
+      map( (resCountries) =>
+        CountryMapper.mapRestCountryArrayToCountryArray(resCountries)),
+      catchError(error =>{
+        console.log('Error exception', error);
+
+        return throwError(() => new Error(`No se pudo obtener paises con ese query ${ query }`)
+        );
+      })
+    );
   }
 }
