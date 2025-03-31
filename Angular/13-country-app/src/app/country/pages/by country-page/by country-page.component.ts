@@ -26,8 +26,8 @@ export class ByCountryPageComponent {
       if (!request.query ) return of([]);
 
       return this.countryService.searchByCountry(request.query)
-    }
-  })
+    },
+  });
 
   //Ejemplo de Promesas
   // countryResource = resource ({

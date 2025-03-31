@@ -3,7 +3,10 @@
 }
 
 @if (countryResource.isLoading()) {
-  <h1 class="text-3xl">Cargando......</h1>
+  <h1 class="text-3xl">Cargando</h1>
+  <span class="loading loading-ball loading-md"></span>
+  <span class="loading loading-ball loading-md"></span>
+  <span class="loading loading-ball loading-md"></span>
 }
 
 @if (countryResource.hasValue()) {
