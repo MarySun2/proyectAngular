@@ -1,10 +1,11 @@
-import {Component, inject, linkedSignal, resource, signal } from '@angular/core';
+import {Component, inject, linkedSignal} from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from '../../components/search-input/country-list/country-list.component';
 import { CountryService } from '../../services/country.service';
 import { of } from 'rxjs';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -19,7 +20,9 @@ export class ByCapitalPageComponent {
   //injectar el servicio
   countryService =inject (CountryService);
 
-  activatedRoute = inject( ActivatedRoute );  // Ruta Activa
+  activatedRoute = inject( ActivatedRoute );  // Ruta Activas
+  router = inject(Router);
+
   queryParam = this.activatedRoute.snapshot.queryParamMap.get( 'query' ) ?? '';
 
   query = linkedSignal(() => this.queryParam);
@@ -33,9 +36,15 @@ export class ByCapitalPageComponent {
 
       if (!request.query ) return of([]);
 
-      return this.countryService.searchByCapital(request.query)
-    }
-  })
+      this.router.navigate(['/country/by-capital'], {
+        queryParams: {
+          query: request.query,
+        },
+      });
+
+      return this.countryService.searchByCapital(request.query);
+    },
+  });
 
   //Ejemplo de Promesas
   // countryResource = resource ({

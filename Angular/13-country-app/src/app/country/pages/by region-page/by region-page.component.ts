@@ -1,9 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, linkedSignal, signal } from '@angular/core';
 import { CountryListComponent } from "../../components/search-input/country-list/country-list.component";
 import { Region } from '../../interfaces/region.type';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { of } from 'rxjs';
 import { CountryService } from '../../services/country.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'by-region-page',
@@ -26,7 +27,14 @@ export class ByRegionPageComponent {
     'Antarctic',
   ];
 
-  selectedRegion = signal<Region | null>(null);
+  activatedRoute = inject( ActivatedRoute );  // Ruta Activas
+  router = inject(Router);
+
+  queryParam = (this.activatedRoute.snapshot.queryParamMap.get( 'region' ) ??
+  '') as Region;
+
+
+  selectedRegion = linkedSignal<Region>(() => this.queryParam ?? 'Americas');
 
   selectRegion(region: Region) {
     this.selectedRegion.set(region);
@@ -38,6 +46,12 @@ export class ByRegionPageComponent {
       loader: ({ request }) => {
 
         if (!request.region ) return of([]);
+
+        this.router.navigate(['/country/by-country'], {
+          queryParams: {
+            region: request.region,
+          },
+        });
 
         return this.countryService.searchByRegion(request.region)
       },
