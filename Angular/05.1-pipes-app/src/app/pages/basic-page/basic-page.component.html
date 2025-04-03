@@ -1,1 +1,26 @@
-<p>basic-page works!</p>,
+<section class="mx-10 pt-3">
+  <h1 class="text-2xl font bold">Pipes Basicos</h1>
+  <h3 class="text-xl font-thin">Pipes incluidos en Angular</h3>
+</section>
+
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full lg:flex-row">
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Lowercase Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ nameUpper() | lowercase }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ nameUpper() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Uppercase Pipe</div>
+    <div class="stat-value text-secondary whitespace-nowrap">{{ nameLower() | uppercase }}</div>
+    <div class="stat-desc text-secondary text-sm whitespace-nowrap">{{ nameLower() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">TitleCase Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ fullName() | titlecase }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ fullName() }}</div>
+  </div>
+</div>
+
