@@ -24,3 +24,56 @@
   </div>
 </div>
 
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full lg:flex-row">
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date | long | GMT-6 </div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"long" : "GMT-+2" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full lg:flex-row">
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date: yyyy MM</div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"yyyy MM" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date | short | GMT-6 </div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"short" : "GMT-4" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full lg:flex-row">
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"dd/MM/yyyy" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"HH:mm:ss" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat text-center">
+    <div class="stat-title whitespace-nowrap">Date Pipe</div>
+    <div class="stat-value whitespace-nowrap">{{ customDate() | date:"EEEE d, MMM" }}</div>
+    <div class="stat-desc text-sm whitespace-nowrap">{{ customDate() }}</div>
+  </div>
+</div>
