@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from "../../components/card/card.component";
-import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
+import { I18nPluralPipe, I18nSelectPipe, JsonPipe, SlicePipe } from '@angular/common';
 
 // se puede hacer esto creando un archivo json y creando una interface
 const client1 = {
@@ -22,7 +22,7 @@ const client2 = {
 @Component({
   selector: 'app-uncommon-page',
   standalone: true,
-  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe],
+  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe, SlicePipe],
   templateUrl: './uncommon-page.component.html',
 })
 export default class UncommonPageComponent {
