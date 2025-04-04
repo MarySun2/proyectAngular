@@ -34,6 +34,11 @@
     <b class="text-primary">{{ clients() | slice : 1 : 3}} </b>
     <b class="mt-2">Slice:3:4</b>
     <b class="text-primary">{{ clients() | slice : 3 : 4}} </b>
+  </app-card>
 
+  <app-card title="JsonPipe">
+    <pre class="text-primary">{{ clients() | json }}</pre>
+    <pre class="text-primary">{{ client()| json }}</pre>
+    <p class="text-primary">{{ clients().join(", ") | json | uppercase }}</p>
   </app-card>
 </div>
