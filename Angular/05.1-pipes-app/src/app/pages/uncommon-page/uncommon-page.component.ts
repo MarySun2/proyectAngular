@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from "../../components/card/card.component";
-import { I18nPluralPipe, I18nSelectPipe, JsonPipe, SlicePipe, UpperCasePipe } from '@angular/common';
+import { I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 // se puede hacer esto creando un archivo json y creando una interface
 const client1 = {
@@ -22,7 +22,7 @@ const client2 = {
 @Component({
   selector: 'app-uncommon-page',
   standalone: true,
-  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe, SlicePipe, JsonPipe, UpperCasePipe],
+  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe, SlicePipe, JsonPipe, UpperCasePipe, KeyValuePipe, TitleCasePipe],
   templateUrl: './uncommon-page.component.html',
 })
 export default class UncommonPageComponent {
@@ -66,4 +66,12 @@ export default class UncommonPageComponent {
   deleteClient() {
     this.clients.update((prev) => prev.slice(1));
   }
+
+  //KeyValue Pipe
+  profile = {
+    name: 'Fernando',
+    age: 36,
+    address: 'Ottawa, Canada',
+    occupation: 'Arquitect',
+  };
 }
