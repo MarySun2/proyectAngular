@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from "../../components/card/card.component";
 import { AsyncPipe, I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { interval, map, tap } from 'rxjs';
 
 // se puede hacer esto creando un archivo json y creando una interface
 const client1 = {
@@ -82,4 +83,10 @@ export default class UncommonPageComponent {
       console.log('promesa finalizada');
     }, 3500);
   });
+
+  //
+  myObservableTimer = interval(2000).pipe (
+    map((value)=> value + 1 ),
+    tap(value => console.log('tap:', value))
+  );
 }
