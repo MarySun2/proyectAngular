@@ -14,7 +14,6 @@ export const storeFrontRoutes: Routes = [
         path: '',
         component: HomePageComponent,
       },
-
       {
         path: 'gender/:gender',
         component: GenderPageComponent,
@@ -23,18 +22,18 @@ export const storeFrontRoutes: Routes = [
         path: 'product/:idSlug',
         component: ProductPageComponent,
       },
-
       {
         path: '**',
-        component: NotFoundPageComponent,
+        component: NotFoundPageComponent, // 👈 Esto captura rutas inválidas dentro del layout
       },
     ],
   },
-
+  // 👇 Si por algún motivo entran rutas fuera del layout (raro, pero puede pasar)
   {
     path: '**',
-    redirectTo: '',
+    component: NotFoundPageComponent,
   },
 ];
 
 export default storeFrontRoutes;
+

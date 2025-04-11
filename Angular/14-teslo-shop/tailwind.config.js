@@ -4,13 +4,16 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
+    fontFamily: {
+      'montserrat': [ 'Montserrat', 'sans-serif' ]
+    },
     extend: {},
   },
   plugins: [
-    require('daisyui'),
+    require( 'daisyui' ),
   ],
   daisyui: {
-    themes: ["night"],
+    themes: [ 'night' ]
   },
 }
 
