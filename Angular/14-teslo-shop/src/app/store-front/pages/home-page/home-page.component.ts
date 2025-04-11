@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [],
+  imports: [ProductCardComponent],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent { }
