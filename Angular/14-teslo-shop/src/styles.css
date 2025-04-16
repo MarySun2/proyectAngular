@@ -6,7 +6,7 @@
 @layer base {
   @font-face {
     font-family: "Montserrat";
-    src: url("../public/asets/fonts/MontserratAlternates-Medium.ttf")
+    src: url("../public/assets/fonts/MontserratAlternates-Medium.ttf")
       format("truetype");
   }
 }
