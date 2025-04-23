@@ -6,9 +6,10 @@
     <product-card [product]="product"/>
   }
 
-  @empty {
-    <p>No hay productos</p>
+ <!-- Empty -->
+ @empty {
+  <p>No hay productos</p>
   }
 </div>
 
-
+<app-pagination [pages]="productsResource.value() ?.pages ?? 0" />
