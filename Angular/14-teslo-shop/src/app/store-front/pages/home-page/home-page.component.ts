@@ -1,10 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { ProductCardComponent } from '@store-front/components/product-card/product-card.component';
-
 import { rxResource } from '@angular/core/rxjs-interop';
+import { ProductCardComponent } from '@products/components/product-card/product-card.component';
 import { ProductsService } from '@products/services/products.service';
-import { PaginationComponent } from '@products/shared/components/pagination/pagination.component';
-import { PaginationService } from '@products/shared/components/pagination/pagination.service';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
+import { PaginationService } from '@shared/components/pagination/pagination.service';
 
 @Component({
   selector: 'app-home-page',

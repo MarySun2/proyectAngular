@@ -4,10 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
 import { ProductsService } from '@products/services/products.service';
-import { ProductCardComponent } from '@store-front/components/product-card/product-card.component';
-
-import { PaginationService } from '@products/shared/components/pagination/pagination.service';
-import { PaginationComponent } from '@products/shared/components/pagination/pagination.component';
+import { ProductCardComponent } from '@products/components/product-card/product-card.component';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
+import { PaginationService } from '@shared/components/pagination/pagination.service';
 
 
 @Component({
