@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { catchError, map, Observable, of, tap } from 'rxjs';
+import { rxResource } from '@angular/core/rxjs-interop';
+
 import { AuthResponse } from '@auth/interfaces/auth-response';
 import { User } from '@auth/interfaces/user.interfaces';
-import { catchError, map, Observable, of, tap } from 'rxjs';
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 const baseUrl = environment.baseUrl;
@@ -20,6 +22,10 @@ export class AuthService {
   private _token = signal <string | null> (null);
 
   private http = inject(HttpClient);
+
+  checkStatusRessource = rxResource({
+    loader: () => this.checkStatus(),
+  });
 
   authStatus = computed<AuthStatus>(() => {
     if (this._authStatus() === 'checking') return 'checking';
@@ -55,4 +61,35 @@ export class AuthService {
       })
     );
   }
+
+
+  checkStatus():Observable<Boolean> {
+    const token = localStorage.getItem(' token ');
+    if( !token ) {
+      return of (false);
+    }
+
+    return this.http.get<AuthResponse>(`${ baseUrl }/auth/check-status`, {
+      headers: {
+        Authorization: `Bearer ${ token }`,
+      },
+    }).pipe(
+      tap(resp => {
+        this._user.set(resp.user);
+        this._authStatus.set('authenticated');
+        this._token.set(resp.token);
+
+        localStorage.setItem('token', resp.token);
+      }),
+      map( () => true),
+      catchError((error:any)=> {
+        this._user.set(null);
+        this._token.set(null);
+        this._authStatus.set('not-authenticated');
+        return of (false);
+      })
+    )
+  }
+
+
 }
