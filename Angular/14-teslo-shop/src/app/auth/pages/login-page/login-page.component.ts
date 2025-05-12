@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -11,9 +11,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent {
 
-  fb = inject (FormBuilder)
-  hasError = signal(false)
-  isPosting = signal(false)
+  fb = inject (FormBuilder);
+  hasError = signal(false);
+  isPosting = signal(false);
+  router = inject(Router);
 
   authService = inject (AuthService);
 
@@ -33,8 +34,22 @@ export class LoginPageComponent {
 
     const {email = '', password = ''} = this.loginForm.value;
 
-    this.authService.login(email!, password!). subscribe(resp => {
-    console.log(resp);
-    })
+    this.authService.login(email!, password!)
+    .subscribe((isAuthenticated) => {
+      if(isAuthenticated) {
+        this.router.navigateByUrl('/');
+        return;
+      }
+
+      this.hasError.set(true);
+      setTimeout(()=>{
+        this.hasError.set(false);
+      }, 2000);
+    });
   }
+
+  //Check Authentication
+  //Registro
+  //Logout
+
 }
