@@ -37,7 +37,7 @@ export class AuthService {
   });
 
   user = computed(() => this._user());
-  token = computed(() => this._token);
+  token = computed(this._token);
 
   login(email: string, password:string):Observable<boolean> {
     return this.http.post<AuthResponse>(`${baseUrl}/auth/login`, {
@@ -51,7 +51,7 @@ export class AuthService {
 
 
   checkStatus():Observable<Boolean> {
-    const token = localStorage.getItem(' token ');
+    const token = localStorage.getItem('token');
     if( !token ) {
       this.logout();
       return of (false);
@@ -72,7 +72,7 @@ export class AuthService {
     this._token.set(null);
     this._authStatus.set('not-authenticated');
     // TODO: revertir
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   //Metodo privado para evitar que se repita tanto el codigo

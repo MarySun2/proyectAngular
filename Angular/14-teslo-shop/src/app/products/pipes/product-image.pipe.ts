@@ -11,7 +11,7 @@ export class ProductImagePipe implements PipeTransform {
 
   transform(value: string | string []): string {
 
-    if (typeof value == 'string'){
+    if (typeof value === 'string'){
       return `${baseUrl}/files/product/${value}`;
     }
 
