@@ -28,11 +28,9 @@ export class AuthService {
 
   authStatus = computed<AuthStatus>(() => {
     if (this._authStatus() === 'checking') return 'checking';
-
     if (this._user()) {
       return 'authenticated';
     }
-
     return 'not-authenticated';
   });
 
@@ -49,21 +47,17 @@ export class AuthService {
     );
   }
 
-
   checkStatus():Observable<Boolean> {
     const token = localStorage.getItem('token');
     if( !token ) {
       this.logout();
-      return of (false);
+      return of(false);
     }
 
-    return this.http.get<AuthResponse>(`${ baseUrl }/auth/check-status`, {
-      // headers: {
-      //   Authorization: `Bearer ${ token }`,
-      // },
-    }).pipe(
+    return this.http.get<AuthResponse>(`${baseUrl}/auth/check-status`)
+    .pipe(
       map(resp => this.handleAuthSuccess(resp)),
-      catchError((error:any)=> this.handleAuthError(error))
+      catchError((error: any) => this.handleAuthError(error))
     );
   }
 
@@ -76,29 +70,29 @@ export class AuthService {
   }
 
   //Metodo privado para evitar que se repita tanto el codigo
-  private handleAuthSuccess({token, user}:AuthResponse) {
+  private handleAuthSuccess({token, user }: AuthResponse) {
     this._user.set(user);
         this._authStatus.set('authenticated');
         this._token.set(token);
-
         localStorage.setItem('token', token);
         return true;
   }
 
-  private handleAuthError( error: any) {
-    this.logout();
-    return of (false);
-  }
+  //
+   private handleAuthError( error: any) {
+     this.logout();
+     return of (false);
+   }
 
-  register(fullName: string, email: string, password: string): Observable<boolean> {
-    return this.http.post<AuthResponse>(`${baseUrl}/auth/register`, {
-      fullName,
-      email,
-      password,
-    }).pipe(
-      map(resp => this.handleAuthSuccess(resp)),
-      catchError(error => this.handleAuthError(error))
-    );
-  }
 
+   register(fullName: string, email: string, password: string): Observable<boolean> {
+     return this.http.post<AuthResponse>(`${baseUrl}/auth/register`, {
+       fullName,
+       email,
+       password,
+     }).pipe(
+       map(resp => this.handleAuthSuccess(resp)),
+       catchError(error => this.handleAuthError(error))
+     );
+   }
 }

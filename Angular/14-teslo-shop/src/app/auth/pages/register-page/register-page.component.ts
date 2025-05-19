@@ -24,24 +24,26 @@ export class RegisterPageComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  onSubmit() {
-    if (this.registerForm.invalid) {
-      this.hasError.set(true);
-      setTimeout(() => this.hasError.set(false), 2000);
-      return;
-    }
+   onSubmit() {
+     if (this.registerForm.invalid) {
+       this.hasError.set(true);
+       setTimeout(() => this.hasError.set(false), 2000);
+       return;
+     }
 
     const { fullName = '', email = '', password = '' } = this.registerForm.value;
 
-    this.authService.register(fullName!, email!, password!)
-      .subscribe((isRegistered: boolean) => {
-        if (isRegistered) {
-          this.router.navigateByUrl('/');
-        } else {
-          this.hasError.set(true);
-          setTimeout(() => this.hasError.set(false), 2000);
-        }
-      });
+     this.authService.register(fullName!, email!, password!)
+       .subscribe((isRegistered: boolean) => {
+         if (isRegistered) {
+           this.router.navigateByUrl('/');
+         } else {
+           this.hasError.set(true);
+           setTimeout(() => this.hasError.set(false), 2000);
+         }
+       });
+
+
   }
 }
 
