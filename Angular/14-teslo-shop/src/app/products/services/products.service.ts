@@ -45,10 +45,23 @@ export class ProductsService {
     if (this.productsCache.has(idSlug)) {
       return of (this.productCache.get(idSlug)!);
     }
+
     return this.http.get<Product>(`${baseUrl}/products/${idSlug}`)
     .pipe(
       // delay(2000),
       tap((product)=> this.productCache.set(idSlug, product))
+    );
+  }
+
+  getProductById(id: string):Observable<Product>{
+    if (this.productsCache.has(id)) {
+      return of (this.productCache.get(id)!);
+    }
+
+    return this.http.get<Product>(`${baseUrl}/products/${id}`)
+    .pipe(
+      // delay(2000),
+      tap((product)=> this.productCache.set(id, product))
     );
   }
 }
