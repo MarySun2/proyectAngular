@@ -3,12 +3,13 @@ import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '@products/services/products.service';
+import { ProductDetailsComponent } from "./product-details/product-details.component";
 
 
 @Component({
   selector: 'app-product-admin-page',
   standalone: true,
-  imports: [],
+  imports: [ProductDetailsComponent],
   templateUrl: './product-admin-page.component.html',
 })
 export class ProductAdminPageComponent {
@@ -33,4 +34,5 @@ export class ProductAdminPageComponent {
       this.router.navigate(['/admin/products']);
     }
   });
+
 }
