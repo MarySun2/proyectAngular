@@ -1,11 +1,34 @@
-import { Component } from '@angular/core';
-import { ProductTableComponent } from '@products/components/product-table/product-table.component';
+import { Component, inject, signal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { ProductsService } from '@products/services/products.service';
+import { PaginationService } from '@shared/components/pagination/pagination.service';
 
+import { ProductTableComponent } from '@products/components/product-table/product-table.component';
+import { PaginationComponent } from "../../../shared/components/pagination/pagination.component";
 
 @Component({
   selector: 'app-products-admin-page',
   standalone: true,
-  imports: [ProductTableComponent],
+  imports: [ProductTableComponent, PaginationComponent],
   templateUrl: './products-admin-page.component.html',
 })
-export class ProductsAdminPageComponent { }
+export class ProductsAdminPageComponent {
+  productsService = inject(ProductsService);
+  paginationService = inject(PaginationService);
+
+  productsPerPage = signal(10);
+
+
+  productsResource = rxResource({
+    request: () => ({
+      page: this.paginationService.CurrentPage() -1,
+      limit: this.productsPerPage()
+    }),
+    loader: ({ request }) => {
+      return this.productsService.getProducts({
+        offset: request.page * 9,
+        limit: request.limit
+      });
+    },
+  });
+}

@@ -5,6 +5,7 @@ import { ProductsAdminPageComponent } from "./pages/products-admin-page/products
 import { IsAdminGuard } from "@auth/guards/is-admin.guard";
 
 
+
 export const adminDasboardRoutes: Routes  = [
   {
     path:'',
@@ -17,7 +18,7 @@ export const adminDasboardRoutes: Routes  = [
       },
 
       {
-        path: 'product/id',
+        path: 'products/:id',
         component: ProductAdminPageComponent,
       },
 
