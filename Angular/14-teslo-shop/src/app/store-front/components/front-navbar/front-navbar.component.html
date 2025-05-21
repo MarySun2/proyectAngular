@@ -58,6 +58,10 @@
     <button class="btn btn-ghost">
       {{ authService.user() ?.fullName }}
     </button>
+
+    <button routerLink="/admin/producs" class="btn btn-sm btn-primary">
+      Panel Admin</button>
+
     <button class="btn btn-sm btn-error" (click)="authService.logout()">
       Salir</button>
    }
