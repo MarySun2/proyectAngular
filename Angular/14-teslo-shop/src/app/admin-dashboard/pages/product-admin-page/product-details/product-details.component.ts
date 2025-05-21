@@ -2,7 +2,10 @@ import { Component, inject, input, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductCarouselComponent } from '@products/components/product-carousel/product-carousel.component';
 import { Product } from '@products/interfaces/product.interface';
+import { FormErrorLabelComponent } from '@shared/components/form-error-label/form-error-label.component';
+
 import { FormUtils } from '@utils/form-utils';
+
 
 
 
@@ -10,7 +13,7 @@ import { FormUtils } from '@utils/form-utils';
 @Component({
   selector: 'product-details',
   standalone: true,
-  imports: [ProductCarouselComponent, ReactiveFormsModule],
+  imports: [ProductCarouselComponent, ReactiveFormsModule, FormErrorLabelComponent],
   templateUrl: './product-details.component.html',
 })
 export class ProductDetailsComponent implements OnInit{
@@ -56,6 +59,8 @@ export class ProductDetailsComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.productForm.value);
+    const isValid = this.productForm.valid;
+
+    console.log(this.productForm.value, { isValid });
   }
  }
