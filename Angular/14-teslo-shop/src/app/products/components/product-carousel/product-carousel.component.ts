@@ -16,6 +16,7 @@ import { ProductImagePipe } from '@products/pipes/product-image.pipe';
 
 @Component({
   selector: 'product-carousel',
+  standalone: true,
   imports: [ProductImagePipe],
   templateUrl: './product-carousel.component.html',
   styles: `
