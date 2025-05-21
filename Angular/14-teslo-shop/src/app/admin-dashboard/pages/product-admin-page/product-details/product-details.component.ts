@@ -6,6 +6,7 @@ import { FormUtils } from '@utils/form-utils';
 
 
 
+
 @Component({
   selector: 'product-details',
   standalone: true,
@@ -40,6 +41,18 @@ export class ProductDetailsComponent implements OnInit{
     this.productForm.reset(this.product() as any);
     this.productForm.patchValue({ tags: formLike.tags?.join(',') });
     //this.productForm.patchValue(formLike as any);
+  }
+
+  //para las tallas
+  onSizeClicked(size: string) {
+    const currentSizes = this.productForm.value.sizes ?? [];
+
+    if (currentSizes.includes(size)) {
+      currentSizes.splice(currentSizes.indexOf(size),1);
+    } else {
+      currentSizes.push(size);
+    }
+    this.productForm.patchValue({ sizes: currentSizes })
   }
 
   onSubmit(){
