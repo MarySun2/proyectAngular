@@ -5,7 +5,14 @@
 
 <div class="divider"></div>
 
-<!-- Las tablas -->
+<!-- Agregar nuevos productos -->
+<div class="mb-7 flex fles-1">
+<button class="btn btn-primary" routerLink="/admin/products/new">
+  Nuevo producto
+</button>
+</div>
+
+<!-- Las tablas listado-->
 <product-table [products]="productsResource.value()?.products ?? []"/>
 
 <div class="divider"></div>
@@ -19,7 +26,6 @@
 
   <select class="select select-bordered w-32"
   (change)="productsPerPage.set(+selectPerPage.value)"
-
   #selectPerPage
   >
     <option value="10">10</option>
@@ -28,3 +34,4 @@
     <option value="100">100</option>
   </select>
 </div>
+

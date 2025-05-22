@@ -1,15 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { ProductsService } from '@products/services/products.service';
 import { PaginationService } from '@shared/components/pagination/pagination.service';
 
 import { ProductTableComponent } from '@products/components/product-table/product-table.component';
-import { PaginationComponent } from "../../../shared/components/pagination/pagination.component";
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
+
 
 @Component({
   selector: 'app-products-admin-page',
   standalone: true,
-  imports: [ProductTableComponent, PaginationComponent],
+  imports: [ProductTableComponent, PaginationComponent, RouterLink],
   templateUrl: './products-admin-page.component.html',
 })
 export class ProductsAdminPageComponent {
