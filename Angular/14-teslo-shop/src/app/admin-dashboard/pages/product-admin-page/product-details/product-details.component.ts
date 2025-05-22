@@ -1,12 +1,15 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ProductCarouselComponent } from '@products/components/product-carousel/product-carousel.component';
-import { Product } from '@products/interfaces/product.interface';
-import { ProductsService } from '@products/services/products.service';
-import { FormErrorLabelComponent } from '@shared/components/form-error-label/form-error-label.component';
+import { firstValueFrom } from 'rxjs';
 
+import { Product } from '@products/interfaces/product.interface';
 import { FormUtils } from '@utils/form-utils';
+import { ProductsService } from '@products/services/products.service';
+
+import { FormErrorLabelComponent } from '@shared/components/form-error-label/form-error-label.component';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -22,6 +25,7 @@ export class ProductDetailsComponent implements OnInit{
   fb = inject(FormBuilder);
 
   productServices = inject(ProductsService);
+  wasSaved = signal(false);
 
   productForm = this.fb.group({
     title: ['', Validators.required],
@@ -84,18 +88,21 @@ export class ProductDetailsComponent implements OnInit{
 
     if( this.product().id === 'new' ) {
       //Crear producto
-      this.productServices.createProduct(productLike).subscribe(product =>{
-        console.log('Producto creado');
+      const product = await firstValueFrom( // El ya hace la suscripcion por lo tanto no hace falta
+        this.productServices.createProduct(productLike)
+      );
+
         this.router.navigate(['/admin/products', product.id]);
-      })
 
     } else {
-      this.productServices
-        .updateProduct(this.product().id, productLike)
-        .subscribe((product) => {
-          console.log('Producto actualizado');
-    });
 
+      await firstValueFrom (
+        this.productServices.updateProduct(this.product().id, productLike)
+      );
     }
+    this.wasSaved.set(true);
+    setTimeout(()=> {
+      this.wasSaved.set(false);
+    },3000);
   }
  }
