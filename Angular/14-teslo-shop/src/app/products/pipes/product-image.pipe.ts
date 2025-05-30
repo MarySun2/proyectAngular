@@ -11,8 +11,12 @@ export class ProductImagePipe implements PipeTransform {
 
   transform(value: null | string | string []): string {
 
-    if (value=== null) {
+    if (value === null) {
       return './assets/images/no-images.png';
+    }
+
+    if (typeof value === 'string' && value.startsWith ('blob:') ) {
+      return value;
     }
 
     if (typeof value === 'string'){

@@ -129,8 +129,11 @@
         Guardar
       </button>
     </div>
+
 <!--Carrusel  -->
-    <product-carousel [images]="product().images" />
+    <!-- <product-carousel [images]="product().images" /> -->
+     <product-carousel [images]="imagesToCarousel()" />
+
 <!-- Subir Archivos -->
     <input type="file"
     multiple
