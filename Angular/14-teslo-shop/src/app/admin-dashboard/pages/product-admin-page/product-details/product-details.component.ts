@@ -101,7 +101,7 @@ export class ProductDetailsComponent implements OnInit{
     if( this.product().id === 'new' ) {
       //Crear producto
       const product = await firstValueFrom( // El ya hace la suscripcion por lo tanto no hace falta
-        this.productServices.createProduct(productLike)
+        this.productServices.createProduct(productLike, this.imageFileList)
       );
 
         this.router.navigate(['/admin/products', product.id]);
@@ -109,7 +109,7 @@ export class ProductDetailsComponent implements OnInit{
     } else {
 
       await firstValueFrom (
-        this.productServices.updateProduct(this.product().id, productLike)
+        this.productServices.updateProduct(this.product().id, productLike, this.imageFileList)
       );
     }
     this.wasSaved.set(true);
