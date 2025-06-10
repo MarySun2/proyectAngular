@@ -13,6 +13,9 @@ export default class ControlFlowComponent {
   public showContent = signal (false);//.asReadonly; // no podria cambiar el valor
   public grade = signal<Grade>('A');
 
+  public frameworks = signal (['Angular', 'Vue', 'Svelte', 'Qwik', 'React']);
+  public frameworks2 = signal ([]);
+
   // Metodo
   public toggleContent () {
     this.showContent.update( value => !value );
