@@ -1,8 +1,9 @@
 
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SidemenuComponent } from '../shared/sidemenu/sidemenu.component';
-import { routes } from '../app.routes';
+import { SidemenuComponent } from '@shared/sidemenu/sidemenu.component';
+
+
 
 
 @Component({
@@ -13,18 +14,4 @@ import { routes } from '../app.routes';
 })
 export default class DashboardComponent {
 
-  public MenuItem = routes
-    .map( route => route.children ?? [] )
-    .flat() // Aplana
-    .filter( route => route && route.path )
-    .filter( route => !route.path?.includes(':'));
-
-  constructor() {
-    // const dashboardRoutes = routes
-    // .map( route => route.children ?? [] )
-    // .flat() // Aplana
-    // .filter( route => route && route.path )
-    // .filter( route => !route.path?.includes(':') )
-    // console.log(dashboardRoutes);
-  }
 }
