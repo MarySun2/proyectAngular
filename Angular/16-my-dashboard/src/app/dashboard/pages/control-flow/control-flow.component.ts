@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-control-flow',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './control-flow.component.html',
 })
-export default class ControlFlowComponent { }
+export default class ControlFlowComponent {
+  public showContent = signal (false);//.asReadonly; // no podria cambiar el valor
+
+  // Metodo
+  public toggleContent () {
+    this.showContent.update( value => !value );
+  }
+}
