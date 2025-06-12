@@ -1,18 +1,110 @@
-<app-title title="Defer Triggers"/>
+<app-title title="Defer Triggers" />
 
 <section>
   <h1 class="text-xl">Interaciones</h1>
-  <hr class="my-2">
-
+  <hr class="my-2" />
+<!-- Cuando se hacerca el mouse -->
   @defer (on interaction) {
-     <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
-  <span> On interaction</span>
-  </app-heavy-loaders-fast>
-  }@placeholder {
-    <div class="w-full h20 bg-purple-100">
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-blue-500 w-full h-full text-white flex items-center justify-center">
+        <span>On interaction</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
       Click en el div
     </div>
   }
-
-
 </section>
+
+<!-- Click en el boton -->
+<section>
+  <hr class="my-2" />
+
+  <button
+    #btnInteraction
+    class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2">
+    Click me!
+  </button>
+
+  @defer (on interaction (btnInteraction)) {
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-blue-500 w-full h-full text-white flex items-center justify-center">
+        <span>On interaction</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
+      placeholder div
+    </div>
+  }
+</section>
+
+<!-- Al hacercar el mouse -->
+<section>
+  <hr class="my-2" />
+
+  @defer (on hover) {
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-blue-500 w-full h-full text-white flex items-center justify-center">
+        <span>On hover</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
+      Hover aquí
+    </div>
+  }
+</section>
+
+<!-- blockeado -->
+<section>
+  <hr class="my-2" />
+
+  @defer (on immediate) {
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-blue-500 w-full h-full text-white flex items-center justify-center">
+        <span>On immediate</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
+      Cargando inmediato...
+    </div>
+  }
+</section>
+
+<!-- con tiempo -->
+<section>
+  <hr class="my-2" />
+
+  @defer (on timer (2000)) {
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-green-500 w-full h-full text-white flex items-center justify-center">
+        <span>On timer</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
+      Esperando 2 segundos...
+    </div>
+  }
+</section>
+
+<!-- Al hacercar el mouse carga -->
+<section>
+  <hr class="my-2" />
+
+  @defer (on hover; prefetch on idle) {
+    <div class="w-96 mx-auto h-20 overflow-hidden">
+      <app-heavy-loaders-fast cssClass="bg-green-500 w-full h-full text-white flex items-center justify-center">
+        <span>On hover, prefetch on idle</span>
+      </app-heavy-loaders-fast>
+    </div>
+  } @placeholder {
+    <div class="w-96 mx-auto h-20 bg-purple-100 flex items-center justify-center">
+      Hover para cargar
+    </div>
+  }
+</section>
+
