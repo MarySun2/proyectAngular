@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UsersService } from '@services/users.service';
+
 
 @Component({
   selector: 'app-users',
@@ -6,4 +8,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './users.component.html',
 })
-export default class UsersComponent { }
+export default class UsersComponent {
+
+  public userService = inject( UsersService )
+ }
