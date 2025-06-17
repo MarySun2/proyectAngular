@@ -1,8 +1,9 @@
-import { Injectable, signal } from '@angular/core';
-import { User } from '@interfaces/req-response';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, computed, inject, signal } from '@angular/core';
+import type { User, UsersResponse } from '@interfaces/req-response';
+import { delay } from 'rxjs';
 
-
-interface state {
+interface State {
   users: User[];
   loading: boolean;
 }
@@ -12,14 +13,32 @@ interface state {
 })
 export class UsersService {
 
-  //Señal # simboliza una propiedad privada  o usas private state
-  #statte = signal <state>({
+  private http = inject(HttpClient);
+
+  #state = signal<State>({
     loading: true,
     users: [],
   });
 
+  public users = computed(() => this.#state().users);
+  public loading = computed(() => this.#state().loading);
+
   constructor() {
-    console.log('Cargando Data')
-   }
+    //Creas el api key para que pueda funcionar
+    const headers = new HttpHeaders({
+      'x-api-key': 'reqres-free-v1'
+    });
+
+ this.http.get<UsersResponse>('https://reqres.in/api/users', {headers})
+      .pipe( delay(1500) )
+      .subscribe( res => {
+
+        this.#state.set({
+          loading: false,
+          users: res.data,
+        })
+
+      });
+  }
 
 }

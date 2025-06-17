@@ -1,7 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -10,10 +11,15 @@ export const appConfig: ApplicationConfig = {
       routes,
       withViewTransitions({
         skipInitialTransition: true,
-        onViewTransitionCreated( transitionInfo ) {
-          console.log({transitionInfo});
-        },
+        // onViewTransitionCreated( transitionInfo ) {
+        //   console.log({transitionInfo});
+        // },
       }),
     ),
+
+    importProvidersFrom(
+      HttpClientModule,
+    )
+
   ]
 };
