@@ -39,3 +39,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 console.log("Hola Mundo");
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+
+// const app1 = document.querySelector<HTMLDivElement>('#app')!;
+// app1.innerHTML= `Hola Mary`;
+// console.log("Hola Mary");
