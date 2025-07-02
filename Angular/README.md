@@ -1,3 +1,6 @@
+# Vite en el ejercicio typesCript-intro
+npm run dev------ para abrir el localhost
+
 # Version de Angular  con contenidos de 01 al 12  
 
 Package                      Version

@@ -12,7 +12,7 @@
     year: string;
  }
  
- //metodo con interface
+ //
  const audioPlayer: AudioPlayer = 
  {
      audioVolumen: 90,
