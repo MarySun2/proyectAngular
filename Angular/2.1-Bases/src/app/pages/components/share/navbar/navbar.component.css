@@ -1,0 +1,26 @@
+ nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #212121;
+    color: white;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav:active {
+  background-color: #424242; /* Color al hacer clic */
+}
+
+nav a:hover {
+  color: #90caf9; /* Azul claro, por ejemplo */
+}
+
+nav a.active {
+  color: red;
+  text-decoration: underline;
+}
