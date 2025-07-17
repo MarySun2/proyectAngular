@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 
 @Injectable({
@@ -17,6 +17,9 @@ export class DragonballService {
     )
   }
 
+  savesToLocalStorage = effect(() =>{
+    localStorage.setItem('characters', JSON.stringify(this.characters()));
+  })
 
 }
 //DI  trabaja como siguenton
